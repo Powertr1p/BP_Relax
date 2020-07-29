@@ -1,4 +1,5 @@
 ﻿using System;
+using Interfaces;
 using UnityEngine;
 
 namespace PlayerInput
@@ -7,7 +8,10 @@ namespace PlayerInput
     public class TapRaycaster : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerToDetect;
+        [SerializeField] private Camera _camera;
 
+        public event Action<IPoppable> OnHitDetected;
+        
         private TapDetector _detector;
 
         private void Awake()
@@ -17,22 +21,21 @@ namespace PlayerInput
 
         private void OnEnable()
         {
-            _detector.OnPlayerTap += DetectTap;
+            _detector.OnPlayerTap += TryDetectHit;
         }
 
-        private void DetectTap()
+        private void TryDetectHit()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
-                if (hit.collider != null)
-                    Debug.Log(hit.collider.name);
-            }
+            RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
+            if (ReferenceEquals(hit.collider, null)) return;
+           
+            if (hit.collider.TryGetComponent(out IPoppable bubble))
+                OnHitDetected?.Invoke(bubble);
         }
 
         private void OnDisable()
         {
-            _detector.OnPlayerTap -= DetectTap;
+            _detector.OnPlayerTap -= TryDetectHit;
         }
     }
 }

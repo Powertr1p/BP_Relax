@@ -4,9 +4,9 @@ namespace Bubbles
 {
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private float _speed = 5f;
+        [SerializeField] private float _speed = 1f;
         [SerializeField] private float _magnitude = 0.5f;
-        [SerializeField] private float _frequency = 20f;
+        [SerializeField] private float _frequency = 1f;
 
         private Vector3 position;
 
