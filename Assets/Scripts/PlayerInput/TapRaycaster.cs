@@ -1,15 +1,23 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Bubbles
+namespace PlayerInput
 {
-    public class BubbleTapHandler : MonoBehaviour
+    [RequireComponent(typeof(TapDetector))]
+    public class TapRaycaster : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerToDetect;
-        
-        private void Update()
+
+        private TapDetector _detector;
+
+        private void Awake()
         {
-            DetectTap();
+            _detector = GetComponent<TapDetector>();
+        }
+
+        private void OnEnable()
+        {
+            _detector.OnPlayerTap += DetectTap;
         }
 
         private void DetectTap()
@@ -18,11 +26,13 @@ namespace Bubbles
             {
                 RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
                 if (hit.collider != null)
-                {
                     Debug.Log(hit.collider.name);
-                }
-
             }
+        }
+
+        private void OnDisable()
+        {
+            _detector.OnPlayerTap -= DetectTap;
         }
     }
 }
