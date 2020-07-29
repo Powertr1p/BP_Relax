@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace Bubbles
 {
     public class Movement : MonoBehaviour
     {
@@ -22,8 +22,8 @@ public class NewBehaviourScript : MonoBehaviour
 
         private void MoveUp()
         {
-            position += transform.up * (Time.deltaTime * _speed);
-            transform.position = position + transform.right * (Mathf.Sin(Time.time * _frequency) * _magnitude);
+            position += Vector3.up * (Time.deltaTime * _speed);
+            transform.position = position + Vector3.right * (Mathf.Sin(Time.time * _frequency) * _magnitude);
         }
     }
 }
