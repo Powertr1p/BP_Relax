@@ -26,7 +26,7 @@ namespace PlayerInput
 
         private void TryDetectHit()
         {
-            RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
+            var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
             if (ReferenceEquals(hit.collider, null)) return;
            
             if (hit.collider.TryGetComponent(out IPoppable bubble))
