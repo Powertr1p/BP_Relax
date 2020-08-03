@@ -4,6 +4,8 @@ namespace Bubbles
 {
     public class Movement : MonoBehaviour
     {
+        [SerializeField] private float _speedMultiplier = 0.001f;
+        
         private float _speed;
         private float _magnitude;
         private float _frequency;
@@ -14,6 +16,8 @@ namespace Bubbles
         {
             position = transform.position;
             GetRandomAttrubutes();
+            var randomScale = Random.Range(1f, 2.5f);
+            transform.localScale = new Vector3(randomScale, randomScale);
         }
 
         private void Update()
@@ -25,6 +29,7 @@ namespace Bubbles
         {
             position += Vector3.up * (Time.deltaTime * _speed);
             transform.position = position + Vector3.right * (Mathf.Sin(Time.time * _frequency) * _magnitude);
+            _speed += _speedMultiplier;
         }
 
         private void GetRandomAttrubutes()

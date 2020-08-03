@@ -17,26 +17,62 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 8456465849144358525, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    - time: 0.04761905
+      value: {fileID: -8275833596728303251, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    - time: 0.0952381
+      value: {fileID: 4804022717145555415, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    - time: 0.14285715
+      value: {fileID: 8198065884509332597, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    - time: 0.1904762
+      value: {fileID: -5843406488975326163, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    - time: 0.23809524
+      value: {fileID: 5154047843403636704, guid: 4fa362dedab244617a8e1f9c2cb93b57,
+        type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 21
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 8456465849144358525, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
+    - {fileID: -8275833596728303251, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
+    - {fileID: 4804022717145555415, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
+    - {fileID: 8198065884509332597, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
+    - {fileID: -5843406488975326163, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
+    - {fileID: 5154047843403636704, guid: 4fa362dedab244617a8e1f9c2cb93b57, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.2857143
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -50,4 +86,12 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.23809524
+    functionName: DestroyObjectOnPopAnimationEnds
+    data: 
+    objectReferenceParameter: {fileID: 11500000, guid: e8e135e747734d28af93890a6faeeede,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
