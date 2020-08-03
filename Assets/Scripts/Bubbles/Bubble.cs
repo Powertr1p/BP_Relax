@@ -5,20 +5,25 @@ namespace Bubbles
 {
     public class Bubble : MonoBehaviour, IPoppable
     {
-        [SerializeField] private Camera _camera;
+        private Camera _camera;
         
         private void Update()
         {
-            if (!IsBubbleOnScreen())
+            if (!IsOnScreen())
                 Destroy(gameObject);
         }
 
+        public void Init(Camera camera)
+        {
+            _camera = camera;
+        }
+        
         public void Pop()
         {
             Destroy(gameObject);
         }
 
-        private bool IsBubbleOnScreen()
+        private bool IsOnScreen()
         {
             Vector2 screenPoint = _camera.WorldToViewportPoint(transform.position);
             bool isOnScreen = screenPoint.y < 1.1f;
