@@ -7,6 +7,7 @@ namespace Bubbles
     {
         private Camera _camera;
         private Animator _animator;
+        private AudioSource _audio;
 
         private Vector2 _screenPoint;
         private static readonly int PopAnimation = Animator.StringToHash("Pop");
@@ -14,6 +15,7 @@ namespace Bubbles
         private void Start()
         {
             _animator = GetComponent<Animator>();
+            _audio = GetComponent<AudioSource>();
         }
         
         private void Update()
@@ -30,6 +32,7 @@ namespace Bubbles
         public void Pop()
         {
             _animator.SetTrigger(PopAnimation);
+            _audio.Play();
         }
 
         private void DestroyObjectOnPopAnimationEnds()
