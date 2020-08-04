@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5866621540391741979}
   - component: {fileID: 5866621540391741977}
   - component: {fileID: 5866621540391741980}
-  - component: {fileID: 5866621540391741976}
   - component: {fileID: 3991824506286410910}
   - component: {fileID: 2629932485671511628}
+  - component: {fileID: 4641372985160132671}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Untagged
@@ -115,18 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85698cd1a9c7a4c51ac2523cb6067541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5866621540391741976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5866621540391741981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e135e747734d28af93890a6faeeede, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _speedMultiplier: 0.01
 --- !u!95 &3991824506286410910
 Animator:
   serializedVersion: 3
@@ -171,7 +160,7 @@ AudioSource:
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
-  BypassListenerEffects: 0
+  BypassListenerEffects: 1
   BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
@@ -242,3 +231,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4641372985160132671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5866621540391741981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 186606f7485940e1b0d32705850f3b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

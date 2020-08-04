@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bubbles
 {
-    public class Bubble : MonoBehaviour, IPoppable
+    public abstract class Bubble : MonoBehaviour, IPoppable
     {
         private Camera _camera;
         private Animator _animator;
@@ -25,12 +25,12 @@ namespace Bubbles
                 Destroy(gameObject);
         }
 
-        public void Init(Camera camera)
+        public virtual void Init(Camera camera)
         {
             _camera = camera;
         }
         
-        public void Pop()
+        public virtual void Pop()
         {
             _animator.SetTrigger(PopAnimation);
             _audio.Play();
