@@ -1,7 +1,7 @@
 using Interfaces;
 using UnityEngine;
 
-namespace Bubbles
+namespace Bubbles.Abstract
 {
     public abstract class Bubble : MonoBehaviour, IPoppable
     {
@@ -19,7 +19,7 @@ namespace Bubbles
             _audio = GetComponent<AudioSource>();
         }
         
-        private void Update()
+        protected virtual void Update()
         {
             if (!IsOnScreen())
                 Destroy(gameObject);

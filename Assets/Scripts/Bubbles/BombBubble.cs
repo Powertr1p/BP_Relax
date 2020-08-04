@@ -1,12 +1,22 @@
+using Bubbles.Abstract;
 using UnityEngine;
 
 namespace Bubbles
 {
     public class BombBubble : Bubble
     {
+        [SerializeField] private GameObject _explosion;
+
         public override void Pop()
         {
-            Debug.Log("BOOM");
+            var explosion = Instantiate(_explosion, transform.position, Quaternion.identity);
+            explosion.transform.localScale = transform.localScale * 2;
+            
+            Destroy(gameObject);
+        }
+
+        protected override void Update()
+        {
         }
     }
 }
