@@ -10,6 +10,7 @@ namespace Bubbles
         private AudioSource _audio;
 
         private Vector2 _screenPoint;
+        
         private static readonly int PopAnimation = Animator.StringToHash("Pop");
 
         private void Start()
