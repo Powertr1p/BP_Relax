@@ -7,7 +7,7 @@ namespace PlayerInput
     public class OnBubbleHitHandler : MonoBehaviour
     {
         [SerializeField] private TapRaycaster _raycaster;
-        
+        [SerializeField] private PopComboDetector.PopComboDetector _comboDetector;
         private void OnEnable()
         {
             _raycaster.OnHitDetected += OnBubbleTap;
@@ -16,6 +16,7 @@ namespace PlayerInput
         private void OnBubbleTap(IPoppable bubble)
         {
             bubble.Pop();
+            _comboDetector.SaveLastPopTime();
         }
     }
 }

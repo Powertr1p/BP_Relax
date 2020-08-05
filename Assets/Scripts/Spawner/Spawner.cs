@@ -6,8 +6,8 @@ namespace Spawner
     public class Spawner : MonoBehaviour
     {
         [SerializeField] private Factory _factory;
-        [SerializeField] private float _minSpawnDelay = 0.3f;
-        [SerializeField] private float _maxSpawnDelay = 0.7f;
+        [SerializeField] private float _minSpawnDelay = 0.1f;
+        [SerializeField] private float _maxSpawnDelay = 0.5f;
         [SerializeField] private float _spawnRadius = 2f;
 
         private void Start()

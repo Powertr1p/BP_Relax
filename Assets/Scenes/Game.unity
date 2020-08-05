@@ -270,6 +270,7 @@ MonoBehaviour:
   _bombBubblePrefab: {fileID: 6546659070746671739, guid: b6cc536bc0d6d4102a3172ea0c0f20fe,
     type: 3}
   _chanceToCreateBombBubble: 10
+  _speedMultiplier: 0.2
 --- !u!1 &2007246504
 GameObject:
   m_ObjectHideFlags: 0
