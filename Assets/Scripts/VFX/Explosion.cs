@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Explosion : MonoBehaviour
+namespace VFX
 {
-    private void Start()
+    public class Explosion : MonoBehaviour
     {
-        Destroy(gameObject, 1f);
+        private void Start()
+        {
+            Destroy(gameObject, 0.4f);
+        }
     }
 }

@@ -15,8 +15,9 @@ namespace Bubbles
             Destroy(gameObject);
         }
 
-        protected override void Update()
+        protected override void Update() //delete this on tests
         {
+            
         }
     }
 }
