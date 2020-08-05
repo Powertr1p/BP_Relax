@@ -6,11 +6,11 @@ namespace PopComboDetector
     {
         [SerializeField] private float _timeBetweenPopToEarnCombo = 0.3f;
         [SerializeField] private int _streakToEarnBonus = 3;
-        
+
         private float _lastSavedTime = 999f;
         private int _comboCounter;
 
-        public void SaveLastPopTime()
+        public void CountComboPops()
         {
             var currentPopTime = Time.time;
 

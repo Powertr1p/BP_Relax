@@ -16,7 +16,7 @@ namespace PlayerInput
         private void OnBubbleTap(IPoppable bubble)
         {
             bubble.Pop();
-            _comboDetector.SaveLastPopTime();
+            _comboDetector.CountComboPops();
         }
     }
 }
