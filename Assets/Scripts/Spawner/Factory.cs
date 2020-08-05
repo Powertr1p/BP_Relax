@@ -18,7 +18,8 @@ namespace Spawner
       {
          var bubble = CreateBubble();
          bubble.Init(_camera);
-
+         SetRandomAttributes(bubble);
+         
          return bubble;
       }
 
@@ -39,6 +40,17 @@ namespace Spawner
          var createdBubble = Instantiate(_bombBubblePrefab, Vector3.zero, Quaternion.identity);
 
          return createdBubble;
+      }
+
+      private void SetRandomAttributes(Bubble bubble)
+      {
+         var randomScale = Random.Range(0.5f, 2.5f);
+         bubble.transform.localScale = new Vector3(randomScale, randomScale);
+
+         var movement = bubble.GetComponent<Movement>();
+         movement.Speed = Random.Range(0.3f, 1.5f);
+         movement.Frequency = Random.Range(0.2f, 1.5f);
+         movement.Magnitude = Random.Range(0.5f, 1.5f);
       }
    }
 }
