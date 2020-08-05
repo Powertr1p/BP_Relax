@@ -10,8 +10,10 @@ namespace PopComboDetector
         
         [SerializeField] private float _timeBetweenPopToEarnCombo = 0.1f;
         [SerializeField] private int _streakToEarnBonus = 3;
-
+       
         public event Action<int> OnComboHitted;
+       
+        public int ScoreMultiplier => _comboCounter;
         
         private float _lastSavedTime = 999f;
         private int _comboCounter;

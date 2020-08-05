@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using PlayerInput;
 using TMPro;
 using UnityEngine;
@@ -8,6 +8,7 @@ namespace UI
     public class Score : MonoBehaviour
     {
         [SerializeField] private OnBubbleHitHandler _hitHandler;
+        [SerializeField] private PopComboDetector.PopComboDetector _comboDetector;
         [SerializeField] private TextMeshProUGUI _scoreText;
 
         private int _score;
@@ -24,8 +25,21 @@ namespace UI
 
         private void UpdateScore(int score)
         {
-            _score += score;
-            DisplayScore();
+            var scoreMultiplier = _comboDetector.ScoreMultiplier != 0 ? _comboDetector.ScoreMultiplier : 1;
+            Debug.Log(score * scoreMultiplier);
+            StartCoroutine(UpdateScoreAnimation(score * scoreMultiplier));
+        }
+
+        private IEnumerator UpdateScoreAnimation(int scoreToAdd)
+        {
+            do
+            {
+                _score += 1;
+                scoreToAdd -= 1;
+                DisplayScore();
+                yield return new WaitForSeconds(0.01f);
+                
+            } while (scoreToAdd != 0);
         }
 
         private void DisplayScore()
