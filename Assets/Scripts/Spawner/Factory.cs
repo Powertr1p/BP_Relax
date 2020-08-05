@@ -24,7 +24,7 @@ namespace Spawner
 
       private Bubble CreateBubble()
       {
-         return Random.Range(0, 100) <= _chanceToCreateBombBubble ? CreateDefaultBubble() : CreateBombBubble();
+         return Random.Range(0, 100) <= _chanceToCreateBombBubble ? CreateBombBubble() : CreateDefaultBubble();
       }
 
       private Bubble CreateDefaultBubble()
