@@ -16,17 +16,15 @@ namespace Spawner
 
       public Bubble GetCreatedBubble()
       {
-         Func<Bubble>[] creators = { CreateDefaultBubble, CreateBombBubble };
-         var creator = GetCreator(creators);
-         var bubble = creator();
+         var bubble = CreateBubble();
          bubble.Init(_camera);
 
          return bubble;
       }
 
-      private Func<Bubble> GetCreator(IReadOnlyList<Func<Bubble>> creators)
+      private Bubble CreateBubble()
       {
-         return Random.Range(0, 100) <= _chanceToCreateBombBubble ? creators[1] : creators[0];
+         return Random.Range(0, 100) <= _chanceToCreateBombBubble ? CreateDefaultBubble() : CreateBombBubble();
       }
 
       private Bubble CreateDefaultBubble()
