@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Bubbles;
 using Bubbles.Abstract;
@@ -13,10 +14,17 @@ namespace Spawner
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
       [SerializeField] private BombBubble _bombBubblePrefab;
       [SerializeField] private int _chanceToCreateBombBubble = 10;
+      [SerializeField] private float _speedMultiplier = 1f;
 
+      private void Start()
+      {
+         StartCoroutine(IncreaseSpeedMultiplier());
+      }
+      
       public Bubble GetCreatedBubble()
       {
          var bubble = CreateBubble();
+         
          bubble.Init(_camera);
          SetRandomAttributes(bubble);
          
@@ -48,9 +56,15 @@ namespace Spawner
          bubble.transform.localScale = new Vector3(randomScale, randomScale);
 
          var movement = bubble.GetComponent<Movement>();
-         movement.Speed = Random.Range(0.3f, 1.5f);
+         movement.Speed = Random.Range(0.3f, 1.5f) + _speedMultiplier;
          movement.Frequency = Random.Range(0.2f, 1.5f);
-         movement.Magnitude = Random.Range(0.5f, 1.5f);
+         movement.Magnitude = Random.Range(0.5f, 1.1f);
+      }
+
+      private IEnumerator IncreaseSpeedMultiplier()
+      {
+         yield return new WaitForSeconds(2f);
+         _speedMultiplier *= 2;
       }
    }
 }
