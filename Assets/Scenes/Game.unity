@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitHandler: {fileID: 2007246508}
+  _comboDetector: {fileID: 418554192}
   _scoreText: {fileID: 1316476266}
 --- !u!114 &1751836490
 MonoBehaviour:
