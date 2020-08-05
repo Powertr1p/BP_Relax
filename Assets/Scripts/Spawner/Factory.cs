@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
 using UnityEngine;
@@ -13,7 +12,7 @@ namespace Spawner
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
       [SerializeField] private BombBubble _bombBubblePrefab;
       [SerializeField] private int _chanceToCreateBombBubble = 10;
-      [SerializeField] private float _speedMultiplier = 1f;
+      [SerializeField] private float _speedMultiplier = 0.2f;
 
       private void Start()
       {
@@ -54,10 +53,12 @@ namespace Spawner
          var randomScale = Random.Range(0.5f, 2.5f);
          bubble.transform.localScale = new Vector3(randomScale, randomScale);
 
-         var movement = bubble.GetComponent<Movement>();
-         movement.Speed = Random.Range(0.3f, 1.5f) + _speedMultiplier;
-         movement.Frequency = Random.Range(0.2f, 1.5f);
-         movement.Magnitude = Random.Range(0.5f, 1.1f);
+         if (bubble.TryGetComponent(out Movement movement))
+         {
+            movement.Speed = Random.Range(0.3f, 1.5f) + _speedMultiplier;
+            movement.Frequency = Random.Range(0.2f, 1.5f);
+            movement.Magnitude = Random.Range(0.5f, 1.1f);
+         }
       }
 
       private IEnumerator IncreaseSpeedMultiplier()

@@ -1,15 +1,18 @@
-using System;
 using Interfaces;
 using UnityEngine;
 
 namespace Bubbles.Abstract
 {
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(Animator))]
     public abstract class Bubble : MonoBehaviour, IPoppable
     {
         private Camera _camera;
         private Animator _animator;
         private AudioSource _audio;
-
+        private Collider2D _collider;
+        
         private Vector2 _screenPoint;
         
         private static readonly int PopAnimation = Animator.StringToHash("Pop");
@@ -18,6 +21,7 @@ namespace Bubbles.Abstract
         {
             _animator = GetComponent<Animator>();
             _audio = GetComponent<AudioSource>();
+            _collider = GetComponent<Collider2D>();
         }
         
         protected virtual void Update()
@@ -33,6 +37,7 @@ namespace Bubbles.Abstract
         
         public virtual void Pop()
         {
+            _collider.enabled = false;
             _animator.SetTrigger(PopAnimation);
             _audio.Play();
         }
