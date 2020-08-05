@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace Bubbles
 {
-    public class DefaultBubble : Bubble, IScoreable
+    public class DefaultBubble : Bubble
     {
         [SerializeField] private int _score = 1;
-        
-        public int GetScore()
+        public override int GetScore()
         {
             return _score;
         }

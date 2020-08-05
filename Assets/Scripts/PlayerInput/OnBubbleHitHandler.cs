@@ -8,7 +8,7 @@ namespace PlayerInput
     {
         [SerializeField] private TapRaycaster _raycaster;
 
-        public event Action OnBubblePopped;
+        public event Action<int> OnBubblePopped;
         
         private void OnEnable()
         {
@@ -18,7 +18,7 @@ namespace PlayerInput
         private void OnBubbleTap(IPoppable bubble)
         {
             bubble.Pop();
-            OnBubblePopped?.Invoke();
+            OnBubblePopped?.Invoke(bubble.GetScore());
         }
 
         private void OnDisable()

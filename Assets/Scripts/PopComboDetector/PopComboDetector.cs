@@ -1,5 +1,4 @@
-﻿using System;
-using PlayerInput;
+﻿using PlayerInput;
 using UnityEngine;
 
 namespace PopComboDetector
@@ -19,11 +18,12 @@ namespace PopComboDetector
             _handler.OnBubblePopped += CountComboPops;
         }
 
-        private void CountComboPops()
+        private void CountComboPops(int scoreFromBubble)
         {
+            if (scoreFromBubble == 0) return;
+            
             var currentPopTime = Time.time;
-
-            if (currentPopTime - _lastSavedTime < _timeBetweenPopToEarnCombo )
+            if (currentPopTime - _lastSavedTime < _timeBetweenPopToEarnCombo)
                 _comboCounter++;
             else
                 _comboCounter = 0;

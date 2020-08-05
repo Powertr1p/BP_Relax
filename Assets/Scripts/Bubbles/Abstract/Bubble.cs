@@ -17,6 +17,8 @@ namespace Bubbles.Abstract
         
         private static readonly int PopAnimation = Animator.StringToHash("Pop");
 
+        public abstract int GetScore();
+        
         private void Start()
         {
             _animator = GetComponent<Animator>();
