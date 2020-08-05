@@ -1,16 +1,25 @@
-﻿using UnityEngine;
+﻿using System;
+using PlayerInput;
+using UnityEngine;
 
 namespace PopComboDetector
 {
     public class PopComboDetector : MonoBehaviour
     {
+        [SerializeField] private OnBubbleHitHandler _handler;
+        
         [SerializeField] private float _timeBetweenPopToEarnCombo = 0.3f;
         [SerializeField] private int _streakToEarnBonus = 3;
 
         private float _lastSavedTime = 999f;
         private int _comboCounter;
 
-        public void CountComboPops()
+        private void OnEnable()
+        {
+            _handler.OnBubblePopped += CountComboPops;
+        }
+
+        private void CountComboPops()
         {
             var currentPopTime = Time.time;
 
@@ -23,6 +32,11 @@ namespace PopComboDetector
                 Debug.Log("STRIKE OF " + _comboCounter);
             
             _lastSavedTime = currentPopTime;
+        }
+
+        private void OnDisable()
+        {
+            _handler.OnBubblePopped -= CountComboPops;
         }
     }
 }

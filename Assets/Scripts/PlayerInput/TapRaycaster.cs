@@ -11,7 +11,7 @@ namespace PlayerInput
         [SerializeField] private Camera _camera;
 
         public event Action<IPoppable> OnHitDetected;
-        
+
         private TapDetector _detector;
 
         private void Awake()

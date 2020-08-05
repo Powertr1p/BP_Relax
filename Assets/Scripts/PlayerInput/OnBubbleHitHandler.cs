@@ -1,13 +1,15 @@
-﻿using Interfaces;
+﻿using System;
+using Interfaces;
 using UnityEngine;
 
 namespace PlayerInput
 {
-    [RequireComponent(typeof(TapRaycaster))]
     public class OnBubbleHitHandler : MonoBehaviour
     {
         [SerializeField] private TapRaycaster _raycaster;
-        [SerializeField] private PopComboDetector.PopComboDetector _comboDetector;
+
+        public event Action OnBubblePopped;
+        
         private void OnEnable()
         {
             _raycaster.OnHitDetected += OnBubbleTap;
@@ -16,7 +18,12 @@ namespace PlayerInput
         private void OnBubbleTap(IPoppable bubble)
         {
             bubble.Pop();
-            _comboDetector.CountComboPops();
+            OnBubblePopped?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            _raycaster.OnHitDetected -= OnBubbleTap;
         }
     }
 }
