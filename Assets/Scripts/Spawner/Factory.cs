@@ -50,7 +50,7 @@ namespace Spawner
 
       private void SetRandomAttributes(Bubble bubble)
       {
-         var randomScale = Random.Range(0.5f, 2.5f);
+         var randomScale = Random.Range(0.7f, 2.5f);
          bubble.transform.localScale = new Vector3(randomScale, randomScale);
 
          if (bubble.TryGetComponent(out Movement movement))
