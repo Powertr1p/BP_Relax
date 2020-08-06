@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using PlayerInput;
 using TMPro;
 using UnityEngine;
@@ -26,20 +27,23 @@ namespace UI
         private void UpdateScore(int score)
         {
             var scoreMultiplier = _comboDetector.ScoreMultiplier != 0 ? _comboDetector.ScoreMultiplier : 1;
-            Debug.Log(score * scoreMultiplier);
             StartCoroutine(UpdateScoreAnimation(score * scoreMultiplier));
         }
 
         private IEnumerator UpdateScoreAnimation(int scoreToAdd)
         {
+            var pointToAdd = scoreToAdd < 0 ? -1 : 1;
+            scoreToAdd = Math.Abs(scoreToAdd);
+            
             do
             {
-                _score += 1;
+                _score += pointToAdd;
                 scoreToAdd -= 1;
                 DisplayScore();
+                
                 yield return new WaitForSeconds(0.01f);
                 
-            } while (scoreToAdd != 0);
+            } while (scoreToAdd > 0 && _score > 0);
         }
 
         private void DisplayScore()

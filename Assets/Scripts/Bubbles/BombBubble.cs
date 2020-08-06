@@ -7,7 +7,7 @@ namespace Bubbles
     {
         [SerializeField] private GameObject _explosion;
         
-        private int _score = 0;
+        private int _score = -50;
         
         public override void Pop()
         {
