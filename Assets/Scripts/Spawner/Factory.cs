@@ -12,6 +12,8 @@ namespace Spawner
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
       [SerializeField] private BombBubble _bombBubblePrefab;
       [SerializeField] private int _chanceToCreateBombBubble = 10;
+      [SerializeField] private FruitBubble _fruitBubblePrefab;
+      [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
 
       private void Start()
@@ -31,7 +33,15 @@ namespace Spawner
 
       private Bubble CreateBubble()
       {
-         return Random.Range(0, 100) <= _chanceToCreateBombBubble ? CreateBombBubble() : CreateDefaultBubble();
+         var roll = Random.Range(0, 100);
+
+         if (roll <= _chanceToCreateBombBubble)
+            return CreateBombBubble();
+         
+         if (roll >= _chanceToCreateBombBubble && roll <= _chanceToCreateFruitBubble)
+            return CreateFruitBubble();
+         
+         return CreateDefaultBubble();
       }
 
       private Bubble CreateDefaultBubble()
@@ -45,6 +55,15 @@ namespace Spawner
       {
          var createdBubble = Instantiate(_bombBubblePrefab, Vector3.zero, Quaternion.identity);
 
+         return createdBubble;
+      }
+
+      private Bubble CreateFruitBubble()
+      {
+         var createdBubble = Instantiate(_fruitBubblePrefab, Vector3.zero, Quaternion.identity);
+         var fruit = createdBubble.GetComponentInChildren<Fruit>();
+         fruit.SetCamera(_camera);
+         
          return createdBubble;
       }
 

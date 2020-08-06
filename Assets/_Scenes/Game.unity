@@ -1036,6 +1036,9 @@ MonoBehaviour:
   _bombBubblePrefab: {fileID: 6546659070746671739, guid: b6cc536bc0d6d4102a3172ea0c0f20fe,
     type: 3}
   _chanceToCreateBombBubble: 10
+  _fruitBubblePrefab: {fileID: 4986554811792955744, guid: 24139c5ede82c4e05b2cfaabeea112fa,
+    type: 3}
+  _chanceToCreateFruitBubble: 25
   _speedMultiplier: 0.2
 --- !u!1 &1751836484
 GameObject:
