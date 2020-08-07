@@ -16,6 +16,8 @@ namespace Spawner
       [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
 
+      private GameMode _gameMode;
+      
       private void Start()
       {
          StartCoroutine(IncreaseSpeedMultiplier());
