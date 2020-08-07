@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
+using Core;
+using Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Spawner
 {
-   public class Factory : MonoBehaviour
+   public class Factory : MonoBehaviour, ILevelLoaderModeHandler
    {
       [SerializeField] private Camera _camera;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
@@ -17,7 +19,7 @@ namespace Spawner
       [SerializeField] private float _speedMultiplier = 0.2f;
 
       private GameMode _gameMode;
-      
+
       private void Start()
       {
          StartCoroutine(IncreaseSpeedMultiplier());
@@ -35,8 +37,9 @@ namespace Spawner
 
       private Bubble CreateBubble()
       {
+         if (_gameMode == GameMode.Relax) return CreateDefaultBubble();
+         
          var roll = Random.Range(0, 100);
-
          if (roll <= _chanceToCreateBombBubble)
             return CreateBombBubble();
          
@@ -86,6 +89,11 @@ namespace Spawner
       {
          yield return new WaitForSeconds(2f);
          _speedMultiplier *= 2;
+      }
+
+      public void OnLevelLoad(GameMode mode)
+      {
+         _gameMode = mode;
       }
    }
 }
