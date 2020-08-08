@@ -26,11 +26,13 @@ namespace PlayerInput
 
         private void TryDetectHit()
         {
-            var hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, _layerToDetect);
-            if (ReferenceEquals(hit.collider, null)) return;
-           
-            if (hit.collider.TryGetComponent(out IPoppable bubble))
-                OnHitDetected?.Invoke(bubble);
+            var hit = Physics2D.RaycastAll(_camera.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, _layerToDetect);
+
+            foreach (var obj in hit)
+            {
+                if (obj.collider.TryGetComponent(out IPoppable bubble))
+                    OnHitDetected?.Invoke(bubble);
+            }
         }
 
         private void OnDisable()
