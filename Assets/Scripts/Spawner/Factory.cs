@@ -29,7 +29,7 @@ namespace Spawner
       
       public Bubble GetCreatedBubble()
       {
-         var bubble = CreateBubble();
+         var bubble = _gameMode == GameModes.Relax ? CreateDefaultBubble() : CreateArcadeBubble();
          
          bubble.Init(_camera);
          SetRandomAttributes(bubble);
@@ -37,10 +37,8 @@ namespace Spawner
          return bubble;
       }
 
-      private Bubble CreateBubble()
+      private Bubble CreateArcadeBubble()
       {
-         if (_gameMode == GameModes.Relax) return CreateDefaultBubble();
-         
          var roll = Random.Range(0, 100);
          if (roll <= _chanceToCreateBombBubble)
             return CreateBombBubble();
