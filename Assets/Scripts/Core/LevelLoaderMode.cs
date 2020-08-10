@@ -6,7 +6,7 @@ namespace Core
 {
     public class LevelLoaderMode
     {
-        public static void Load(string sceneName, GameMode mode)
+        public static void Load(string sceneName, GameMode.GameModes mode)
         {
             UnityAction<Scene, Scene> changeHandler = null;
 

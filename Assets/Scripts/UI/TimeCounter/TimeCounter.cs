@@ -8,7 +8,7 @@ namespace UI.TimeCounter
    public class TimeCounter : MonoBehaviour
    { 
       [SerializeField] private TextMeshProUGUI _timeText;
-      [SerializeField] private float _levelTime = 10f;
+      [SerializeField] private float _levelTime = 25f;
 
       public event Action OnTimeIsUp; 
       

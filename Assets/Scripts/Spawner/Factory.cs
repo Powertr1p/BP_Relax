@@ -4,6 +4,7 @@ using Bubbles.Abstract;
 using Core;
 using Interfaces;
 using UnityEngine;
+using static Core.GameMode;
 using Random = UnityEngine.Random;
 
 namespace Spawner
@@ -18,10 +19,11 @@ namespace Spawner
       [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
 
-      private GameMode _gameMode;
+      private GameModes _gameMode;
 
       private void Start()
       {
+         
          StartCoroutine(IncreaseSpeedMultiplier());
       }
       
@@ -37,7 +39,7 @@ namespace Spawner
 
       private Bubble CreateBubble()
       {
-         if (_gameMode == GameMode.Relax) return CreateDefaultBubble();
+         if (_gameMode == GameModes.Relax) return CreateDefaultBubble();
          
          var roll = Random.Range(0, 100);
          if (roll <= _chanceToCreateBombBubble)
@@ -91,7 +93,7 @@ namespace Spawner
          _speedMultiplier *= 2;
       }
 
-      public void OnLevelLoad(GameMode mode)
+      public void OnLevelLoad(GameModes mode)
       {
          _gameMode = mode;
       }
