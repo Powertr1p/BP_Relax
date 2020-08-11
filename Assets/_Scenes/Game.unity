@@ -197,6 +197,8 @@ GameObject:
   m_Component:
   - component: {fileID: 173295454}
   - component: {fileID: 173295455}
+  - component: {fileID: 173295457}
+  - component: {fileID: 173295456}
   m_Layer: 0
   m_Name: _Level
   m_TagString: Untagged
@@ -230,6 +232,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2497807a7219487898f490fc4621f120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &173295456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173295453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c307b28d2b5142cc9abaec4aa6a3e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeText: {fileID: 846270285}
+  _relaxModeTimeCount: 99
+  _arcadeModeTimeCount: 25
+--- !u!114 &173295457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173295453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedc7c1246ef444568d7eeba8238363e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameOverPanel: {fileID: 2142471942}
+  _raycaster: {fileID: 2007246505}
 --- !u!1 &418554191
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +558,7 @@ GameObject:
   - component: {fileID: 846270286}
   - component: {fileID: 846270285}
   m_Layer: 5
-  m_Name: TimeCounter
+  m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,8 +1098,6 @@ GameObject:
   - component: {fileID: 1751836485}
   - component: {fileID: 1751836489}
   - component: {fileID: 1751836490}
-  - component: {fileID: 1751836491}
-  - component: {fileID: 1751836492}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1188,35 +1217,6 @@ MonoBehaviour:
   _comboDetector: {fileID: 418554192}
   _bonusMessagePrefab: {fileID: 5129720910120621400, guid: 0336b6bc6c1bc488e84785a855c44473,
     type: 3}
---- !u!114 &1751836491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751836484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c307b28d2b5142cc9abaec4aa6a3e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeText: {fileID: 846270285}
-  _relaxModeTimeCount: 99
-  _arcadeModeTimeCount: 25
---- !u!114 &1751836492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1751836484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cedc7c1246ef444568d7eeba8238363e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameOverPanel: {fileID: 2142471942}
-  _timeCounter: {fileID: 1751836491}
 --- !u!1 &1792619105
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,12 +1299,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1751836484}
-        m_MethodName: 
+      - m_Target: {fileID: 173295457}
+        m_MethodName: ToMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1586,7 +1586,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895980597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 173295457}
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1895980597
 MonoBehaviour:
   m_ObjectHideFlags: 0
