@@ -4,7 +4,7 @@ namespace Core
 {
     public class GameModeHandler : ILevelLoaderModeHandler
     {
-        public GameModes CurrentGameMode { get; private set; }
+        public static GameModes CurrentGameMode { get; private set; }
 
         public void OnLevelLoad(GameModes mode)
         {

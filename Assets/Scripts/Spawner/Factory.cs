@@ -4,12 +4,11 @@ using Bubbles.Abstract;
 using Core;
 using Interfaces;
 using UnityEngine;
-using static Core.GameModeHandler;
 using Random = UnityEngine.Random;
 
 namespace Spawner
 {
-   public class Factory : MonoBehaviour, ILevelLoaderModeHandler
+   public class Factory : MonoBehaviour
    {
       [SerializeField] private Camera _camera;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
@@ -19,7 +18,7 @@ namespace Spawner
       [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
 
-      private GameModes _gameMode;
+      private GameModes _gameMode => GameModeHandler.CurrentGameMode;
 
       private void Start()
       {
@@ -30,7 +29,7 @@ namespace Spawner
       {
          Debug.Log(_gameMode);
          
-         var bubble = _gameMode == GameModes.Relax ? CreateDefaultBubble() : CreateArcadeBubble();
+         var bubble = _gameMode == GameModes.Relax ? CreateRelaxModeBubble() : CreateArcadeModeBubble();
          
          bubble.Init(_camera);
          SetRandomAttributes(bubble);
@@ -38,7 +37,12 @@ namespace Spawner
          return bubble;
       }
 
-      private Bubble CreateArcadeBubble()
+      private Bubble CreateRelaxModeBubble()
+      {
+         return CreateDefaultBubble();
+      }
+
+      private Bubble CreateArcadeModeBubble()
       {
          var roll = Random.Range(0, 100);
          if (roll <= _chanceToCreateBombBubble)
@@ -90,11 +94,6 @@ namespace Spawner
       {
          yield return new WaitForSeconds(2f);
          _speedMultiplier *= 2;
-      }
-
-      public void OnLevelLoad(GameModes mode)
-      {
-         _gameMode = mode;
       }
    }
 }
