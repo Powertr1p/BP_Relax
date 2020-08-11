@@ -1,8 +1,9 @@
 using Interfaces;
+using UnityEngine;
 
 namespace Core
 {
-    public class GameModeHandler : ILevelLoaderModeHandler
+    public class GameModeHandler : MonoBehaviour, ILevelLoaderModeHandler
     {
         public static GameModes CurrentGameMode { get; private set; }
 

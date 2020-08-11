@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core;
 using TMPro;
 using UnityEngine;
 
@@ -8,12 +9,16 @@ namespace UI.TimeCounter
    public class TimeCounter : MonoBehaviour
    { 
       [SerializeField] private TextMeshProUGUI _timeText;
-      [SerializeField] private float _levelTime = 25f;
+      [SerializeField] private float _relaxModeTimeCount = 99f;
+      [SerializeField] private float _arcadeModeTimeCount = 25f;
+      private float _levelTime;
 
       public event Action OnTimeIsUp; 
       
       private void Start()
       {
+         _levelTime = GameModeHandler.CurrentGameMode == GameModes.Relax ? _relaxModeTimeCount : _arcadeModeTimeCount;
+         
          StartCoroutine(StartCountdown());
       }
       

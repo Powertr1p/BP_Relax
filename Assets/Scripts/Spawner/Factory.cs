@@ -27,8 +27,6 @@ namespace Spawner
       
       public Bubble GetCreatedBubble()
       {
-         Debug.Log(_gameMode);
-         
          var bubble = _gameMode == GameModes.Relax ? CreateRelaxModeBubble() : CreateArcadeModeBubble();
          
          bubble.Init(_camera);
