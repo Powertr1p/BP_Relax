@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
 using Core;
@@ -17,11 +18,17 @@ namespace Spawner
       [SerializeField] private FruitBubble _fruitBubblePrefab;
       [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
+      [SerializeField] private float _delayBeforeSpeedUpInRelaxMode = 10f;
+      [SerializeField] private float _delayBeforeSpeedUpInArcadeMode = 2.5f;
 
+      private float _delayBeforeSpeedUp;
+      
       private GameModes _gameMode => GameModeHandler.CurrentGameMode;
 
       private void Start()
       {
+         _delayBeforeSpeedUp = _gameMode == GameModes.Relax ? _delayBeforeSpeedUpInRelaxMode : _delayBeforeSpeedUpInArcadeMode;
+
          StartCoroutine(IncreaseSpeedMultiplier());
       }
       
@@ -90,8 +97,12 @@ namespace Spawner
 
       private IEnumerator IncreaseSpeedMultiplier()
       {
-         yield return new WaitForSeconds(2f);
-         _speedMultiplier *= 2;
+         while (true)
+         {
+            yield return new WaitForSeconds(_delayBeforeSpeedUp);
+            _speedMultiplier += 0.1f;
+            Debug.Log(_speedMultiplier);
+         }
       }
    }
 }

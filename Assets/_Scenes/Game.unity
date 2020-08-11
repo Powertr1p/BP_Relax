@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _factory: {fileID: 1402116795}
   _minSpawnDelay: 0.2
-  _maxSpawnDelay: 0.6
+  _maxSpawnDelay: 0.4
   _spawnRadius: 2
 --- !u!4 &1402116794
 Transform:
@@ -1084,6 +1084,8 @@ MonoBehaviour:
     type: 3}
   _chanceToCreateFruitBubble: 25
   _speedMultiplier: 0.2
+  _delayBeforeSpeedUpInRelaxMode: 10
+  _delayBeforeSpeedUpInArcadeMode: 2.5
 --- !u!1 &1751836484
 GameObject:
   m_ObjectHideFlags: 0
