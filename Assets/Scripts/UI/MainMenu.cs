@@ -7,12 +7,12 @@ namespace UI
     {
         public void LoadRelaxMode()
         {
-            LevelLoaderMode.Load("Game", GameMode.GameModes.Relax);
+            LevelLoaderMode.Load("Game", GameModes.Relax);
         }
 
         public void LoadArcadeMode()
         {
-            LevelLoaderMode.Load("Game", GameMode.GameModes.Arcade);
+            LevelLoaderMode.Load("Game", GameModes.Arcade);
         }
     }
 }

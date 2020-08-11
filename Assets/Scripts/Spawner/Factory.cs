@@ -4,7 +4,7 @@ using Bubbles.Abstract;
 using Core;
 using Interfaces;
 using UnityEngine;
-using static Core.GameMode;
+using static Core.GameModeHandler;
 using Random = UnityEngine.Random;
 
 namespace Spawner
@@ -23,12 +23,13 @@ namespace Spawner
 
       private void Start()
       {
-         
          StartCoroutine(IncreaseSpeedMultiplier());
       }
       
       public Bubble GetCreatedBubble()
       {
+         Debug.Log(_gameMode);
+         
          var bubble = _gameMode == GameModes.Relax ? CreateDefaultBubble() : CreateArcadeBubble();
          
          bubble.Init(_camera);

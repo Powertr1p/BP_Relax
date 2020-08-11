@@ -15,7 +15,6 @@ namespace Core
 
         private void ToggleGameOver()
         {
-            Time.timeScale = 0;
             _gameOverPanel.SetActive(true);
         }
     

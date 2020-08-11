@@ -4,6 +4,6 @@ namespace Interfaces
 {
     public interface ILevelLoaderModeHandler
     {
-        void OnLevelLoad(GameMode.GameModes mode);
+        void OnLevelLoad(GameModes mode);
     }
 }
