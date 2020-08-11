@@ -5,6 +5,7 @@ namespace Bubbles
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Animator))]
     public class Fruit : MonoBehaviour, IPoppable
     {
         [SerializeField] private int _score = 20;
@@ -13,14 +14,17 @@ namespace Bubbles
         private Rigidbody2D _rigidbody;
         private FruitBubble _bubble;
         private Camera _camera;
+        private Animator _animator;
 
         private Vector3 _screenPoint;
-        
+        private static readonly int Animation = Animator.StringToHash("StartAnimation");
+
         private void Awake()
         {
             _bubble = GetComponentInParent<FruitBubble>();
             _collider2D = GetComponent<Collider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Update()
@@ -37,6 +41,7 @@ namespace Bubbles
         private void OnEnable()
         {
             _bubble.OnBubblePopped += StartFalling;
+            _bubble.OnBubblePopped += StartAnimation;
         }
 
         private void StartFalling()
@@ -44,6 +49,11 @@ namespace Bubbles
              transform.parent = null;
             _collider2D.enabled = true;
             _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        }
+
+        private void StartAnimation()
+        {
+            _animator.SetTrigger(Animation);
         }
         
         private bool IsOnScreen()
@@ -65,6 +75,7 @@ namespace Bubbles
         private void OnDisable()
         {
             _bubble.OnBubblePopped -= StartFalling;
+            _bubble.OnBubblePopped -= StartAnimation;
         }
     }
 }
