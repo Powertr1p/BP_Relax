@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using Interfaces;
 using UnityEngine;
 
@@ -17,6 +19,7 @@ namespace Bubbles
         private Animator _animator;
 
         private Vector3 _screenPoint;
+
         private static readonly int Animation = Animator.StringToHash("StartAnimation");
 
         private void Awake()
@@ -61,7 +64,7 @@ namespace Bubbles
             _screenPoint = _camera.WorldToViewportPoint(transform.position);
             return _screenPoint.y > -0.5f;
         }
-        
+
         public void Pop()
         {
             Destroy(gameObject);
