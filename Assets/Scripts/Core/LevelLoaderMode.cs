@@ -8,21 +8,18 @@ namespace Core
     {
         public static void Load(string sceneName, GameModes mode)
         {
-            UnityAction<Scene, Scene> changeHandler = null;
-
-            changeHandler = (from, to) =>
+            void ChangeHandler(Scene @from, Scene to)
             {
-                if (to.name == sceneName)
-                {
-                    SceneManager.activeSceneChanged -= changeHandler;
+                if (to.name != sceneName) return;
 
-                    foreach (var rootObject in to.GetRootGameObjects())
-                    foreach (var handler in rootObject.GetComponentsInChildren<ILevelLoaderModeHandler>())
-                        handler.OnLevelLoad(mode);
-                }
-            };
-            
-            SceneManager.activeSceneChanged += changeHandler;
+                SceneManager.activeSceneChanged -= ChangeHandler;
+
+                foreach (var rootObject in to.GetRootGameObjects())
+                foreach (var handler in rootObject.GetComponentsInChildren<ILevelLoaderModeHandler>())
+                    handler.OnLevelLoad(mode);
+            }
+
+            SceneManager.activeSceneChanged += ChangeHandler;
             SceneManager.LoadScene(sceneName);
         }
     }
