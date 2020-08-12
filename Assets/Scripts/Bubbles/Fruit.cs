@@ -12,6 +12,7 @@ namespace Bubbles
     public class Fruit : MonoBehaviour, IPoppable
     {
         [SerializeField] private int _score = 20;
+        [SerializeField] private AudioClip _consumeSound;
         
         private Collider2D _collider2D;
         private Rigidbody2D _rigidbody;
@@ -71,6 +72,7 @@ namespace Bubbles
 
         public void Pop()
         {
+            AudioSource.PlayClipAtPoint(_consumeSound, Camera.main.transform.position);
             Destroy(gameObject);
         }
 
