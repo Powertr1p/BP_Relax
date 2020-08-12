@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
 using Core;
-using Interfaces;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -101,7 +99,6 @@ namespace Spawner
          {
             yield return new WaitForSeconds(_delayBeforeSpeedUp);
             _speedMultiplier += 0.1f;
-            Debug.Log(_speedMultiplier);
          }
       }
    }
