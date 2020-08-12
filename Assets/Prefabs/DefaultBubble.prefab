@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3991824506286410910}
   - component: {fileID: 2629932485671511628}
   - component: {fileID: 4641372985160132671}
-  m_Layer: 0
-  m_Name: Bubble
+  m_Layer: 8
+  m_Name: DefaultBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85698cd1a9c7a4c51ac2523cb6067541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedMultiplier: 0.01
+  Speed: 0
+  Magnitude: 0
+  Frequency: 0
 --- !u!95 &3991824506286410910
 Animator:
   serializedVersion: 3
@@ -243,3 +245,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 186606f7485940e1b0d32705850f3b06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 1

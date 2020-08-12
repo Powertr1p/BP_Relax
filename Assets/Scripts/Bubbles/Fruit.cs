@@ -72,7 +72,7 @@ namespace Bubbles
 
         public void Pop()
         {
-            AudioSource.PlayClipAtPoint(_consumeSound, Camera.main.transform.position);
+            AudioSource.PlayClipAtPoint(_consumeSound, _camera.transform.position);
             Destroy(gameObject);
         }
 

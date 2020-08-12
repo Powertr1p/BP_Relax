@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1195161299766813680}
   - component: {fileID: 1195161299766813683}
   - component: {fileID: 351123965231480473}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4383627194788961531}
   - component: {fileID: 3445094427695003177}
   - component: {fileID: 6546659070746671739}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: BombBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85698cd1a9c7a4c51ac2523cb6067541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  Speed: 0
+  Magnitude: 0
+  Frequency: 0
 --- !u!95 &4383627194788961531
 Animator:
   serializedVersion: 3
@@ -348,3 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explosion: {fileID: 8757433269564028800, guid: 92e2394657e0f4762b09dd8918d32fe4,
     type: 3}
+  _score: -50
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
