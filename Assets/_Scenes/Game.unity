@@ -1086,6 +1086,23 @@ MonoBehaviour:
   _speedMultiplier: 0.2
   _delayBeforeSpeedUpInRelaxMode: 10
   _delayBeforeSpeedUpInArcadeMode: 2.5
+  _fruits:
+  - {fileID: 21300000, guid: b6db9497082da4c49986df5e7385bbdf, type: 3}
+  - {fileID: 21300000, guid: 92b7fe6727e9d453798b5e7cc1371f26, type: 3}
+  - {fileID: 21300000, guid: 65f6d9937a71c4757b30a2b40a9afb72, type: 3}
+  - {fileID: 21300000, guid: 0ed4653319f3246b5b65f713be8c83f7, type: 3}
+  - {fileID: 21300000, guid: 72b678a39f84745a8aecece5b988cfa7, type: 3}
+  - {fileID: 21300000, guid: f9ab8c22ade9340ccbff8dd7145fecc3, type: 3}
+  - {fileID: 21300000, guid: d4eb5e3e08d3f4ae094ded0f98a50712, type: 3}
+  - {fileID: 21300000, guid: d6607198eb964486fabd311776ae5720, type: 3}
+  - {fileID: 21300000, guid: 7f0a8edc9a2a648888c7d11664015c64, type: 3}
+  - {fileID: 21300000, guid: df021a04e6a3048eab5fb41b7ff5a920, type: 3}
+  - {fileID: 21300000, guid: 90d6a382e49f4417cabf7eed8cba25f2, type: 3}
+  - {fileID: 21300000, guid: d0dee4f08f0ad4179a6ad2cf527187de, type: 3}
+  - {fileID: 21300000, guid: 825797eeb86b449f7b7e503a282a210d, type: 3}
+  - {fileID: 21300000, guid: 540fdd418adea4182a4430d7952acf27, type: 3}
+  - {fileID: 21300000, guid: 88ad7e13d36df44cdb4e624dfbddc5c6, type: 3}
+  - {fileID: 21300000, guid: d0a72fb068f0147c2a5187b1203726b4, type: 3}
 --- !u!1 &1751836484
 GameObject:
   m_ObjectHideFlags: 0

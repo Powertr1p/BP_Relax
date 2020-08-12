@@ -18,6 +18,8 @@ namespace Spawner
       [SerializeField] private float _speedMultiplier = 0.2f;
       [SerializeField] private float _delayBeforeSpeedUpInRelaxMode = 10f;
       [SerializeField] private float _delayBeforeSpeedUpInArcadeMode = 2.5f;
+      [Header("Fruit Sprites")]
+      [SerializeField] private Sprite[] _fruits;
 
       private float _delayBeforeSpeedUp;
       
@@ -75,7 +77,8 @@ namespace Spawner
       {
          var createdBubble = Instantiate(_fruitBubblePrefab, Vector3.zero, Quaternion.identity);
          var fruit = createdBubble.GetComponentInChildren<Fruit>();
-         fruit.SetCamera(_camera);
+         var fruitSprite = _fruits[Random.Range(0, _fruits.Length)];
+         fruit.Init(_camera, fruitSprite);
          
          return createdBubble;
       }

@@ -8,6 +8,7 @@ namespace Bubbles
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class Fruit : MonoBehaviour, IPoppable
     {
         [SerializeField] private int _score = 20;
@@ -17,6 +18,7 @@ namespace Bubbles
         private FruitBubble _bubble;
         private Camera _camera;
         private Animator _animator;
+        private SpriteRenderer _sprite;
 
         private Vector3 _screenPoint;
 
@@ -28,6 +30,7 @@ namespace Bubbles
             _collider2D = GetComponent<Collider2D>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
+            _sprite = GetComponent<SpriteRenderer>();
         }
 
         private void Update()
@@ -36,9 +39,10 @@ namespace Bubbles
                 Destroy(gameObject);
         }
 
-        public void SetCamera(Camera camera)
+        public void Init(Camera camera, Sprite sprite)
         {
             _camera = camera;
+            _sprite.sprite = sprite;
         }
         
         private void OnEnable()
