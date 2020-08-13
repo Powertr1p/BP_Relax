@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 2539026499025895405}
   - component: {fileID: 3469677932386882879}
   - component: {fileID: 4986554811792955744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FruitBubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
