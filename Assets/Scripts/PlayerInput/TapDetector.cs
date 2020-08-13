@@ -1,4 +1,5 @@
 ﻿using System;
+using Core;
 using UnityEngine;
 
 namespace PlayerInput
@@ -9,9 +10,13 @@ namespace PlayerInput
         
         private void Update()
         {
-            //if (Input.GetMouseButtonDown(0))
-            if (Input.GetMouseButton(0))
-                OnPlayerTap?.Invoke();
+            if (GameModeHandler.CurrentGameState == GameState.NormalState)
+                if (Input.GetMouseButtonDown(0))
+                    OnPlayerTap?.Invoke();
+            
+            if (GameModeHandler.CurrentGameState == GameState.SlowState)
+                if (Input.GetMouseButton(0))
+                    OnPlayerTap?.Invoke();
         }
     }
 }

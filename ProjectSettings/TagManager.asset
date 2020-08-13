@@ -47,3 +47,6 @@ TagManager:
   - name: Explosion
     uniqueID: 4162259143
     locked: 0
+  - name: Trail
+    uniqueID: 2060569249
+    locked: 0

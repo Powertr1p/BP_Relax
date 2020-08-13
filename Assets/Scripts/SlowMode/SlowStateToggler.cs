@@ -6,6 +6,7 @@ namespace SlowMode
 {
     public class SlowStateToggler : MonoBehaviour
     {
+        [SerializeField] private float _timeInSlowState = 5f;
         public event Action SlowStateEnabled;
         public event Action SlowStateDisabled;
 
@@ -17,7 +18,7 @@ namespace SlowMode
 
         private IEnumerator StartCountdownToDisableBehavior()
         {
-            yield return new WaitForSecondsRealtime(5f);
+            yield return new WaitForSecondsRealtime(_timeInSlowState);
             EndBehavior();
         }
 
