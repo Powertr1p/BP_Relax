@@ -6,7 +6,7 @@ namespace Core
 {
     public class LevelLoaderMode
     {
-        public static void Load(string sceneName, GameModes mode)
+        public static void Load(string sceneName, GameMode mode)
         {
             void ChangeHandler(Scene @from, Scene to)
             {
