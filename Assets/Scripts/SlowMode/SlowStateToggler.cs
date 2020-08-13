@@ -6,7 +6,7 @@ namespace SlowMode
 {
     public class SlowStateToggler : MonoBehaviour
     {
-        [SerializeField] private float _timeInSlowState = 5f;
+        [SerializeField] private float _timeInSlowState = 6f;
         public event Action SlowStateEnabled;
         public event Action SlowStateDisabled;
 
