@@ -1,3 +1,4 @@
+using PlayerInput;
 using SlowMode;
 using UnityEngine;
 
@@ -5,9 +6,10 @@ namespace VFX
 {
     public class SwipeTrailVFXSpawer : MonoBehaviour
     {
-        [SerializeField] private Trail _trail;
+        [SerializeField] private Trail _trailPrefab;
         [SerializeField] private SlowStateToggler _slowStateToggler;
-
+        [SerializeField] private TapDetector _tapDetector;
+        
         private Trail _activeTrail;
         
         private void OnEnable()
@@ -20,7 +22,8 @@ namespace VFX
         {
             if (_activeTrail != null) return;
             
-            var trail = Instantiate(_trail, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+            var trail = Instantiate(_trailPrefab, _tapDetector.GetTapPosition(), Quaternion.identity);
+            trail.Init(_tapDetector);
             _activeTrail = trail;
         }
 

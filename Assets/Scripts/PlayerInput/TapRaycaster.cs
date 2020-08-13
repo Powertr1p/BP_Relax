@@ -8,7 +8,6 @@ namespace PlayerInput
     public class TapRaycaster : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerToDetect;
-        [SerializeField] private Camera _camera;
 
         public event Action<IPoppable> OnHitDetected;
 
@@ -26,7 +25,7 @@ namespace PlayerInput
 
         private void TryDetectHit()
         {
-            var hit = Physics2D.RaycastAll(_camera.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, _layerToDetect);
+            var hit = Physics2D.RaycastAll(_detector.GetTapPosition(), Vector3.forward, _layerToDetect);
 
             foreach (var obj in hit)
             {

@@ -6,6 +6,7 @@ namespace PlayerInput
 {
     public class TapDetector : MonoBehaviour
     {
+        [SerializeField] private Camera _camera;
         public event Action OnPlayerTap;
         
         private void Update()
@@ -17,6 +18,11 @@ namespace PlayerInput
             if (GameModeHandler.CurrentGameState == GameState.SlowState)
                 if (Input.GetMouseButton(0))
                     OnPlayerTap?.Invoke();
+        }
+
+        public Vector3 GetTapPosition()
+        {
+            return _camera.ScreenToWorldPoint(Input.mousePosition);
         }
     }
 }

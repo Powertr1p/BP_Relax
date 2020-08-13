@@ -1913,7 +1913,6 @@ MonoBehaviour:
   _layerToDetect:
     serializedVersion: 2
     m_Bits: 256
-  _camera: {fileID: 519420031}
 --- !u!114 &2007246506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1926,6 +1925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83616d2426602413bbfe42bbff295636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
 --- !u!4 &2007246507
 Transform:
   m_ObjectHideFlags: 0
