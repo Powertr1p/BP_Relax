@@ -199,8 +199,6 @@ GameObject:
   - component: {fileID: 173295455}
   - component: {fileID: 173295457}
   - component: {fileID: 173295456}
-  - component: {fileID: 173295458}
-  - component: {fileID: 173295459}
   m_Layer: 0
   m_Name: _Level
   m_TagString: Untagged
@@ -234,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2497807a7219487898f490fc4621f120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowStateToggler: {fileID: 173295458}
+  _slowStateToggler: {fileID: 803708300}
 --- !u!114 &173295456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,33 +262,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 2142471942}
   _raycaster: {fileID: 2007246505}
---- !u!114 &173295458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173295453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb614e9574584f63bb483e4290b9a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeInSlowState: 7
---- !u!114 &173295459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173295453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5cd1542be62412ab24bc11710895fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _slowModeSound: {fileID: 8300000, guid: 5cda7a0b3a61a4a56a797d6ff360c247, type: 3}
-  _slowModeSoundVolume: 0.5
 --- !u!1 &418554191
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +547,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &803708299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 803708302}
+  - component: {fileID: 803708301}
+  - component: {fileID: 803708300}
+  m_Layer: 0
+  m_Name: SlowStateHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &803708300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803708299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb614e9574584f63bb483e4290b9a3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeInSlowState: 7
+--- !u!114 &803708301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803708299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cd1542be62412ab24bc11710895fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slowModeSound: {fileID: 8300000, guid: 5cda7a0b3a61a4a56a797d6ff360c247, type: 3}
+  _slowModeSoundVolume: 0.2
+--- !u!4 &803708302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803708299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8780992, y: 0.48032728, z: -726.291}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846270284
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,8 +843,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 173295458}
-        m_MethodName: StartBehavior
+      - m_Target: {fileID: 803708301}
+        m_MethodName: OnButtonTap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -835,8 +865,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 173295459}
-        m_MethodName: OnButtonTap
+      - m_Target: {fileID: 803708300}
+        m_MethodName: StartBehavior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1402116793}
+        m_MethodName: SpawnAdditionalBubblesForSlowState
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1925,7 +1966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _trailPrefab: {fileID: 4776007510064610039, guid: a70b5a187ddbc489cbec4927bf0f5b4f,
     type: 3}
-  _slowStateToggler: {fileID: 173295458}
+  _slowStateToggler: {fileID: 803708300}
   _tapDetector: {fileID: 2007246506}
 --- !u!1 &2142471942
 GameObject:
