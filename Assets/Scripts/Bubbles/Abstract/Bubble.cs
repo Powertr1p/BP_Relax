@@ -52,7 +52,7 @@ namespace Bubbles.Abstract
         private bool IsOnScreen()
         {
             _screenPoint = _camera.WorldToViewportPoint(transform.position);
-            return _screenPoint.y < 1.1f;
+            return _screenPoint.y < 1.1f && _screenPoint.y > -1.1f;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace UI.TimeCounter
       
       private void Start()
       {
-         _levelTime = GameModeHandler.CurrentGameMode == GameModes.Relax ? _relaxModeTimeCount : _arcadeModeTimeCount;
+         _levelTime = GameModeHandler.CurrentGameMode == GameMode.Relax ? _relaxModeTimeCount : _arcadeModeTimeCount;
          
          StartCoroutine(StartCountdown());
       }

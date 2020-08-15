@@ -23,18 +23,18 @@ namespace Spawner
 
       private float _delayBeforeSpeedUp;
       
-      private GameModes _gameMode => GameModeHandler.CurrentGameMode;
+      private GameMode GameMode => GameModeHandler.CurrentGameMode;
 
       private void Start()
       {
-         _delayBeforeSpeedUp = _gameMode == GameModes.Relax ? _delayBeforeSpeedUpInRelaxMode : _delayBeforeSpeedUpInArcadeMode;
+         _delayBeforeSpeedUp = GameMode == GameMode.Relax ? _delayBeforeSpeedUpInRelaxMode : _delayBeforeSpeedUpInArcadeMode;
 
          StartCoroutine(IncreaseSpeedMultiplier());
       }
       
       public Bubble GetCreatedBubble()
       {
-         var bubble = _gameMode == GameModes.Relax ? CreateRelaxModeBubble() : CreateArcadeModeBubble();
+         var bubble = GameMode == GameMode.Relax ? CreateRelaxModeBubble() : CreateArcadeModeBubble();
          
          bubble.Init(_camera);
          SetRandomAttributes(bubble);
