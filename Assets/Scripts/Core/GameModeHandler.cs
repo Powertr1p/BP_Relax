@@ -17,6 +17,12 @@ namespace Core
             _slowStateToggler.SlowStateDisabled += OnSlowStateDisabled;
         }
 
+        private void Update()
+        {
+            if (CurrentGameState == GameState.SlowState)
+                Time.fixedDeltaTime = Time.timeScale * 0.02f;
+        }
+
         public void OnLevelLoad(GameMode mode)
         {
             CurrentGameMode = mode;
