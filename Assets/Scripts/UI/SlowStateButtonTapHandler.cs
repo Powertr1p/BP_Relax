@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI
 {
@@ -7,11 +6,6 @@ namespace UI
     {
         [SerializeField] private AudioClip _slowModeSound;
         [SerializeField] [Range(0f, 1f)] private float _slowModeSoundVolume;
-            
-        private void Awake()
-        {
-            
-        }
 
         public void OnButtonTap()
         {
