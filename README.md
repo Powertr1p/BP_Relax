@@ -1,2 +1,2 @@
-# BP_Project
-hyp
+# BP_Relax
+Relax hypercasual game
