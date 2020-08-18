@@ -11,6 +11,7 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _scoreText;
 
         private int _score;
+        public int GetScore => _score;
 
         private void OnEnable()
         {
