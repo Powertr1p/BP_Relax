@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
-using Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,32 +8,20 @@ namespace Spawner
 {
    public class Factory : MonoBehaviour
    {
+      [Header("Core")]
       [SerializeField] private Camera _camera;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
-      [SerializeField] private BombBubble _bombBubblePrefab;
-      [SerializeField] private int _chanceToCreateBombBubble = 10;
-      [SerializeField] private FruitBubble _fruitBubblePrefab;
-      [SerializeField] private int _chanceToCreateFruitBubble = 25;
       [SerializeField] private float _speedMultiplier = 0.2f;
-      [SerializeField] private float _delayBeforeSpeedUpInRelaxMode = 10f;
-      [SerializeField] private float _delayBeforeSpeedUpInArcadeMode = 2.5f;
-      [Header("Fruit Sprites")]
-      [SerializeField] private Sprite[] _fruits;
-
-      private float _delayBeforeSpeedUp;
-      
-      private GameMode GameMode => GameModeHandler.CurrentGameMode;
+      [SerializeField] private float _delayBeforeSpeedUp = 2.5f;
 
       private void Start()
       {
-         _delayBeforeSpeedUp = GameMode == GameMode.Relax ? _delayBeforeSpeedUpInRelaxMode : _delayBeforeSpeedUpInArcadeMode;
-
          StartCoroutine(IncreaseSpeedMultiplier());
       }
       
       public Bubble GetCreatedBubble()
       {
-         var bubble = GameMode == GameMode.Relax ? CreateRelaxModeBubble() : CreateArcadeModeBubble();
+         var bubble = CreateBubble();
          
          bubble.Init(_camera);
          SetRandomAttributes(bubble);
@@ -42,44 +29,10 @@ namespace Spawner
          return bubble;
       }
 
-      private Bubble CreateRelaxModeBubble()
-      {
-         return CreateDefaultBubble();
-      }
-
-      private Bubble CreateArcadeModeBubble()
-      {
-         var roll = Random.Range(0, 100);
-         if (roll <= _chanceToCreateBombBubble)
-            return CreateBombBubble();
-         
-         if (roll >= _chanceToCreateBombBubble && roll <= _chanceToCreateFruitBubble)
-            return CreateFruitBubble();
-         
-         return CreateDefaultBubble();
-      }
-
-      private Bubble CreateDefaultBubble()
+      private Bubble CreateBubble()
       {
          var createdBubble = Instantiate(_defaultBubblePrefab, Vector3.zero, Quaternion.identity);
 
-         return createdBubble;
-      }
-
-      private Bubble CreateBombBubble()
-      {
-         var createdBubble = Instantiate(_bombBubblePrefab, Vector3.zero, Quaternion.identity);
-
-         return createdBubble;
-      }
-
-      private Bubble CreateFruitBubble()
-      {
-         var createdBubble = Instantiate(_fruitBubblePrefab, Vector3.zero, Quaternion.identity);
-         var fruit = createdBubble.GetComponentInChildren<Fruit>();
-         var fruitSprite = _fruits[Random.Range(0, _fruits.Length)];
-         fruit.Init(_camera, fruitSprite);
-         
          return createdBubble;
       }
 
