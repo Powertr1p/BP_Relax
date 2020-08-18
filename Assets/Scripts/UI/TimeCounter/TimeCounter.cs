@@ -22,7 +22,7 @@ namespace UI.TimeCounter
          while (_levelTime >= 0)
          {
             DisplayTime();
-            yield return new WaitForSecondsRealtime(1f);
+            yield return new WaitForSeconds(1f);
             _levelTime--;
          }
          

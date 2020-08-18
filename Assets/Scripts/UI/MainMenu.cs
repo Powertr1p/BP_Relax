@@ -5,14 +5,9 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        public void LoadRelaxMode()
+        public void LoadGame()
         {
             LevelLoaderMode.Load("Game", GameMode.Relax);
-        }
-
-        public void LoadArcadeMode()
-        {
-            LevelLoaderMode.Load("Game", GameMode.Arcade);
         }
     }
 }
