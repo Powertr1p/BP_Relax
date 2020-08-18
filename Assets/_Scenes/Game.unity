@@ -1592,6 +1592,10 @@ MonoBehaviour:
   _minSpawnDelay: 0.2
   _maxSpawnDelay: 0.4
   _spawnRadius: 2
+  _minSlowStateBottomYPosition: -1
+  _maxSlowStateBottomYPosition: 2
+  _minSlowStateTopYPosition: 11
+  _maxSlowStateTopYPosition: 13
 --- !u!4 &1402116794
 Transform:
   m_ObjectHideFlags: 0
@@ -1623,6 +1627,15 @@ MonoBehaviour:
     type: 3}
   _speedMultiplier: 0.2
   _delayBeforeSpeedUp: 2.5
+  _minSpeed: 0.3
+  _maxSpeed: 1.5
+  _minFrequency: 0.2
+  _maxFrequency: 1.5
+  _minMagnitude: 0.5
+  _maxMagnitude: 1.1
+  _minScale: 0.7
+  _maxScale: 2.5
+  _speedInSlowState: 2
 --- !u!1 &1751836484
 GameObject:
   m_ObjectHideFlags: 0

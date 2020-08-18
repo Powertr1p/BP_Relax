@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Interfaces;
 using SlowMode;
 using UnityEngine;
@@ -25,6 +26,12 @@ namespace Core
 
         private void OnSlowStateEnabled()
         {
+            StartCoroutine(WaitBeforeStartSlowState());
+        }
+
+        private IEnumerator WaitBeforeStartSlowState()
+        {
+            yield return new WaitForSecondsRealtime(0.5f);
             CurrentGameState = GameState.SlowState;
             Time.timeScale = 0.25f;
         }
