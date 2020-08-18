@@ -1,5 +1,5 @@
-using Core;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -7,7 +7,7 @@ namespace UI
     {
         public void LoadGame()
         {
-            LevelLoaderMode.Load("Game", GameMode.Relax);
+            SceneManager.LoadScene("Game");
         }
     }
 }

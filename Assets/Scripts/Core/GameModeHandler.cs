@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace Core
 {
-    public class GameModeHandler : MonoBehaviour, ILevelLoaderModeHandler
+    public class GameModeHandler : MonoBehaviour
     {
         [SerializeField] private SlowStateToggler _slowStateToggler;
-        public static GameMode CurrentGameMode { get; private set; }
+
         public static GameState CurrentGameState { get; private set; }
 
         private void OnEnable()
@@ -21,11 +21,6 @@ namespace Core
         {
             if (CurrentGameState == GameState.SlowState)
                 Time.fixedDeltaTime = Time.timeScale * 0.02f;
-        }
-
-        public void OnLevelLoad(GameMode mode)
-        {
-            CurrentGameMode = mode;
         }
 
         private void OnSlowStateEnabled()
@@ -45,12 +40,6 @@ namespace Core
             _slowStateToggler.SlowStateEnabled -= OnSlowStateEnabled;
             _slowStateToggler.SlowStateDisabled -= OnSlowStateDisabled;
         }
-    }
-    
-    public enum GameMode
-    {
-        Relax, 
-        Arcade
     }
 
     public enum GameState
