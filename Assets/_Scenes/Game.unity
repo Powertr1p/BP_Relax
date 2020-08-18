@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _factory: {fileID: 1402116795}
-  _minSpawnDelay: 0.2
+  _minSpawnDelay: 0.1
   _maxSpawnDelay: 0.4
   _spawnRadius: 2
   _minSlowStateBottomYPosition: -1
@@ -1625,10 +1625,10 @@ MonoBehaviour:
   _camera: {fileID: 519420031}
   _defaultBubblePrefab: {fileID: 4641372985160132671, guid: 6596590b68bd443c2917de3f1882d85f,
     type: 3}
-  _speedMultiplier: 0.2
-  _delayBeforeSpeedUp: 2.5
-  _minSpeed: 0.3
-  _maxSpeed: 1.5
+  _speedMultiplier: 0.1
+  _delayBeforeSpeedUp: 3.5
+  _minSpeed: 0.1
+  _maxSpeed: 0.6
   _minFrequency: 0.2
   _maxFrequency: 1.5
   _minMagnitude: 0.5
