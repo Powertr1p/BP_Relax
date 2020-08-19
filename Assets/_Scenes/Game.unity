@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2627,3 +2627,8 @@ MonoBehaviour:
   _leftStar: {fileID: 1471441486}
   _middleStar: {fileID: 420079549}
   _rightStar: {fileID: 483053739}
+  _scoreForOneStar: 500
+  _scoreForTwoStars: 1000
+  _scoreForThreeStars: 2000
+  _scalingSizePerTime: 0.05
+  _delayBetweenScaling: 0.05

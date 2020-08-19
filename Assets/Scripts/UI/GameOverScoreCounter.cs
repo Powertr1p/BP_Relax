@@ -12,6 +12,7 @@ namespace UI
         
         private void Start()
         {
+            if (_gameScore.GetScore <= 0) return;
             StartCoroutine(CountScoreByOne());
         }
         
@@ -21,14 +22,10 @@ namespace UI
 
             do
             {
-                if ((_gameScore.GetScore - score) / 10 > 0)
-                    score += 10;
-                else
-                    score++;
-
+                score += (_gameScore.GetScore - score) / 10 > 0 ? 10 : 1;
                 ScoreUpated?.Invoke(score);
+                
                 yield return new WaitForSecondsRealtime(0);
-
             } while (score < _gameScore.GetScore);
         }
     }
