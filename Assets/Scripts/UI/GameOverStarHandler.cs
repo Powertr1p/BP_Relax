@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,17 +12,29 @@ namespace UI
         [SerializeField] private Image _middleStar;
         [SerializeField] private Image _rightStar;
 
+        [SerializeField] private int _scoreForOneStar = 500;
+        [SerializeField] private int _scoreForTwoStars = 1000;
+        [SerializeField] private int _scoreForThreeStars = 2000;
+
+        private readonly float _delayBeforeScaleNextStar = 1f;
         private readonly float _defaultCornerStarSize = 1.3f;
         private readonly float _defaultMiddleStarSize = 1.5f;
         
-        private void Start()
+        private IEnumerator Start()
         {
-            if (_gameScore.GetScore >= 500)
+            if (_gameScore.GetScore >= _scoreForOneStar)
                 StartCoroutine(ScaleUpStar(_leftStar, _defaultCornerStarSize));
-            if (_gameScore.GetScore >= 1000)
+
+            yield return new WaitForSecondsRealtime(_delayBeforeScaleNextStar);
+            
+            if (_gameScore.GetScore >= _scoreForTwoStars)
                 StartCoroutine(ScaleUpStar(_middleStar, _defaultMiddleStarSize));
-            if (_gameScore.GetScore >= 2000)
+
+            yield return new WaitForSecondsRealtime(_delayBeforeScaleNextStar);
+            
+            if (_gameScore.GetScore >= _scoreForThreeStars)
                 StartCoroutine(ScaleUpStar(_rightStar, _defaultCornerStarSize));
+
         }
 
         private IEnumerator ScaleUpStar(Image star, float defaultStarSize)
