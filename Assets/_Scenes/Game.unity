@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1052db40a6df480fb41e5ae8c1584d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameScore: {fileID: 1751836489}
+  _scoreCounter: {fileID: 2142471946}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1642,11 +1642,11 @@ MonoBehaviour:
   _speedMultiplier: 0.1
   _delayBeforeSpeedUp: 3.5
   _minSpeed: 0.1
-  _maxSpeed: 0.6
-  _minFrequency: 0.2
-  _maxFrequency: 1.5
+  _maxSpeed: 1.2
+  _minFrequency: 0.3
+  _maxFrequency: 1.2
   _minMagnitude: 0.5
-  _maxMagnitude: 1.1
+  _maxMagnitude: 1.2
   _minScale: 0.7
   _maxScale: 2.5
   _speedInSlowState: 2
@@ -2304,6 +2304,7 @@ GameObject:
   - component: {fileID: 2142471943}
   - component: {fileID: 2142471945}
   - component: {fileID: 2142471944}
+  - component: {fileID: 2142471946}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -2371,3 +2372,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142471942}
   m_CullTransparentMesh: 0
+--- !u!114 &2142471946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142471942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d06619d3b1d4ceb9febae593e1db0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameScore: {fileID: 1751836489}
