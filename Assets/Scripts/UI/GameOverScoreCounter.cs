@@ -21,9 +21,13 @@ namespace UI
 
             do
             {
-                score += 1;
+                if ((_gameScore.GetScore - score) / 10 > 0)
+                    score += 10;
+                else
+                    score++;
+
                 ScoreUpated?.Invoke(score);
-                yield return new WaitForSecondsRealtime(0.0001f);
+                yield return new WaitForSecondsRealtime(0);
 
             } while (score < _gameScore.GetScore);
         }
