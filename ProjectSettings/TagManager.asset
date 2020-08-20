@@ -16,8 +16,8 @@ TagManager:
   - Bubble
   - Explosion
   - Bomb
-  - 
-  - 
+  - UI
+  - IUParticles
   - 
   - 
   - 
@@ -49,4 +49,10 @@ TagManager:
     locked: 0
   - name: Trail
     uniqueID: 2060569249
+    locked: 0
+  - name: UI
+    uniqueID: 3256884795
+    locked: 0
+  - name: UIParticles
+    uniqueID: 3144822171
     locked: 0

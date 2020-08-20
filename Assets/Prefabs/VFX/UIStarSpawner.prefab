@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3381677933780381875}
   - component: {fileID: 5887262321375044390}
   - component: {fileID: 8807179151065940250}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UIStarSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4728,8 +4728,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1150145125
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0

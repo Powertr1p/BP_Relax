@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ namespace UI
     public class GameOverStarHandler : MonoBehaviour
     {
         [SerializeField] private Score _gameScore;
+        [SerializeField] private GameObject _starParticles;
         
         [Header("Star Images")]
         [SerializeField] private Image _leftStar;
@@ -26,8 +28,22 @@ namespace UI
         private readonly float _defaultCornerStarSize = 1.3f;
         private readonly float _defaultMiddleStarSize = 1.5f;
 
+        private Animator _animator;
+        private static readonly int FallStars = Animator.StringToHash("FallStars");
+
+        private void Awake()
+        {
+            _animator = GetComponentInChildren<Animator>();
+        }
+
         private IEnumerator Start()
         {
+            if (_gameScore.GetScore < _scoreForOneStar)
+            {
+                _animator.SetTrigger(FallStars);
+                yield break;
+            }
+
             if (_gameScore.GetScore >= _scoreForOneStar)
                 StartCoroutine(ScaleUpStar(_leftStar, _defaultCornerStarSize));
 
@@ -50,7 +66,10 @@ namespace UI
             {
                 star.rectTransform.localScale += sizeToAdd;
                 yield return new WaitForSecondsRealtime(_delayBetweenScaling);
-            } 
+            }
+
+            var particles = Instantiate(_starParticles, star.transform);
+            Destroy(particles, 3f);
         }
     }
 }
