@@ -15,7 +15,7 @@ namespace UI
 
         private void OnEnable()
         {
-            _hitHandler.OnBubblePopped += UpdateScore;
+            _hitHandler.OnBubblePoped += UpdateScore;
         }
 
         private void Start()
@@ -41,7 +41,7 @@ namespace UI
 
         private void OnDisable()
         {
-            _hitHandler.OnBubblePopped -= UpdateScore;
+            _hitHandler.OnBubblePoped -= UpdateScore;
         }
     }
 }

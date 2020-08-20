@@ -20,7 +20,7 @@ namespace PopComboDetector
 
         private void OnEnable()
         {
-            _handler.OnBubblePopped += CountComboPops;
+            _handler.OnBubblePoped += CountComboPops;
         }
 
         private void CountComboPops(int scoreFromBubble)
@@ -41,7 +41,7 @@ namespace PopComboDetector
 
         private void OnDisable()
         {
-            _handler.OnBubblePopped -= CountComboPops;
+            _handler.OnBubblePoped -= CountComboPops;
         }
     }
 }
