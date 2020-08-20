@@ -8,12 +8,11 @@ using Random = UnityEngine.Random;
 namespace Bubbles.Abstract
 {
     [RequireComponent(typeof(Collider2D))]
-    [RequireComponent(typeof(AudioSource))]
+    
     public abstract class Bubble : MonoBehaviour, IPoppable
     {
         public event Action Poped;
-        
-        private AudioSource _audio;
+
         private Collider2D _collider;
         private GameOverHandler _handler;
         
@@ -24,7 +23,6 @@ namespace Bubbles.Abstract
 
         private void Start()
         {
-            _audio = GetComponent<AudioSource>();
             _collider = GetComponent<Collider2D>();
         }
         
@@ -46,7 +44,6 @@ namespace Bubbles.Abstract
         {
             _collider.enabled = false;
             Poped?.Invoke();
-            _audio.Play();
         }
 
         private void OnGameOver()
@@ -57,7 +54,6 @@ namespace Bubbles.Abstract
         private IEnumerator WaitBeforePop()
         {
             yield return new WaitForSeconds(Random.Range(0.1f, 2f));
-            _audio.volume = 0.1f;
             Pop();
         }
 
