@@ -10,6 +10,7 @@ namespace Core
     {
         [SerializeField] private SlowStateToggler _slowStateToggler;
         [SerializeField] private GameOverHandler _gameOverHandler;
+
         public static GameState CurrentGameState { get; private set; }
 
         private void OnEnable()
@@ -51,7 +52,6 @@ namespace Core
         private void OnGameOver()
         {
             CurrentGameState = GameState.GameOver;
-            Time.timeScale = 0f;
         }
 
         private void OnDisable()

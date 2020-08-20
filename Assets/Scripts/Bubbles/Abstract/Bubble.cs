@@ -1,5 +1,9 @@
+using System;
+using System.Collections;
+using Core;
 using Interfaces;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Bubbles.Abstract
 {
@@ -12,6 +16,7 @@ namespace Bubbles.Abstract
         private Animator _animator;
         private AudioSource _audio;
         private Collider2D _collider;
+        private GameOverHandler _handler;
         
         private Vector2 _screenPoint;
         
@@ -32,9 +37,11 @@ namespace Bubbles.Abstract
                 Destroy(gameObject);
         }
 
-        public virtual void Init(Camera camera)
+        public virtual void Init(Camera camera, GameOverHandler handler)
         {
             _camera = camera;
+            _handler = handler;
+            _handler.OnGameOver += OnGameOver;
         }
         
         public virtual void Pop()
@@ -42,6 +49,18 @@ namespace Bubbles.Abstract
             _collider.enabled = false;
             _animator.SetTrigger(PopAnimation);
             _audio.Play();
+        }
+
+        private void OnGameOver()
+        {
+            StartCoroutine(WaitBeforePop());
+        }
+        
+        private IEnumerator WaitBeforePop()
+        {
+            yield return new WaitForSeconds(Random.Range(0.1f, 2f));
+            _audio.volume = 0.1f;
+            Pop();
         }
 
         private void DestroyObjectOnPopAnimationEnds()
@@ -53,6 +72,11 @@ namespace Bubbles.Abstract
         {
             _screenPoint = _camera.WorldToViewportPoint(transform.position);
             return _screenPoint.y < 1.1f && _screenPoint.y > -1.1f;
+        }
+
+        private void OnDisable()
+        {
+            _handler.OnGameOver -= OnGameOver;
         }
     }
 }

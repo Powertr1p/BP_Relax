@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Bubbles;
+using Core;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Spawner
 {
     public class Spawner : MonoBehaviour
-    {
-        [Header("Spawn Parameters")]
+    { 
         [SerializeField] private Factory _factory;
+
+        [Header("Spawn Parameters")]
         [SerializeField] private float _minSpawnDelay = 0.1f;
         [SerializeField] private float _maxSpawnDelay = 0.5f;
         [SerializeField] private float _spawnRadius = 2f;
@@ -18,23 +22,12 @@ namespace Spawner
         [SerializeField] private float _maxSlowStateBottomYPosition = 2;
         [SerializeField] private float _minSlowStateTopYPosition = 11;
         [SerializeField] private float _maxSlowStateTopYPosition = 13;
-
+        
         private void Start()
         {
             StartCoroutine(Spawn());
         }
-    
-         private IEnumerator Spawn()
-         {
-              while (true)
-              {
-                  var bubble = _factory.GetCreatedBubble();
-                  bubble.transform.position = SetBubblePosition(0, 0);
-
-                  yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay));
-             }
-         }
-
+        
          public void SpawnAdditionalBubblesForSlowState()
          {
              for (int i = 0; i < 20; i++)
@@ -50,6 +43,17 @@ namespace Spawner
                      bubble.transform.position = SetBubblePosition(_minSlowStateTopYPosition, _maxSlowStateTopYPosition);
                      bubble.GetComponent<Movement>().Speed = -_factory.SpeedInSlowState;
                  }
+             }
+         }
+         
+         private IEnumerator Spawn()
+         { 
+             while (true) 
+             { 
+                 var bubble = _factory.GetCreatedBubble(); 
+                 bubble.transform.position = SetBubblePosition(0, 0);
+                 
+                 yield return new WaitForSeconds(Random.Range(_minSpawnDelay, _maxSpawnDelay));
              }
          }
          

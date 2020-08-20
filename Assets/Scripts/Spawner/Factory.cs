@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Bubbles;
 using Bubbles.Abstract;
+using Core;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,7 @@ namespace Spawner
       [Header("Core")]
       [SerializeField] private Camera _camera;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
+      [SerializeField] private GameOverHandler _gameOverHandler;
       [SerializeField] private float _speedMultiplier = 0.2f;
       [SerializeField] private float _delayBeforeSpeedUp = 2.5f;
 
@@ -44,7 +46,7 @@ namespace Spawner
       {
          var bubble = CreateBubble();
          
-         bubble.Init(_camera);
+         bubble.Init(_camera, _gameOverHandler);
          SetRandomAttributes(bubble);
          
          return bubble;

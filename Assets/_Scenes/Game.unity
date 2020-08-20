@@ -262,6 +262,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 2142471942}
   _raycaster: {fileID: 2007246505}
+  _spawner: {fileID: 1402116792}
 --- !u!1 &210830733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1812,7 @@ MonoBehaviour:
   _camera: {fileID: 519420031}
   _defaultBubblePrefab: {fileID: 4641372985160132671, guid: 6596590b68bd443c2917de3f1882d85f,
     type: 3}
+  _gameOverHandler: {fileID: 173295457}
   _speedMultiplier: 0.1
   _delayBeforeSpeedUp: 3.5
   _minSpeed: 0.1
