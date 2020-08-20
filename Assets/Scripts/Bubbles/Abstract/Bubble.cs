@@ -9,24 +9,21 @@ namespace Bubbles.Abstract
 {
     [RequireComponent(typeof(Collider2D))]
     [RequireComponent(typeof(AudioSource))]
-    [RequireComponent(typeof(Animator))]
     public abstract class Bubble : MonoBehaviour, IPoppable
     {
-        private Camera _camera;
-        private Animator _animator;
+        public event Action Poped;
+        
         private AudioSource _audio;
         private Collider2D _collider;
         private GameOverHandler _handler;
         
-        private Vector2 _screenPoint;
-        
-        private static readonly int PopAnimation = Animator.StringToHash("Pop");
+        private float _maxScreenPosition;
+        private float _minScreenPosition;
 
         public abstract int GetScore();
-        
+
         private void Start()
         {
-            _animator = GetComponent<Animator>();
             _audio = GetComponent<AudioSource>();
             _collider = GetComponent<Collider2D>();
         }
@@ -37,9 +34,10 @@ namespace Bubbles.Abstract
                 Destroy(gameObject);
         }
 
-        public virtual void Init(Camera camera, GameOverHandler handler)
+        public virtual void Init(float maxPossiblePosition, float minPossiblePosition, GameOverHandler handler)
         {
-            _camera = camera;
+            _maxScreenPosition = maxPossiblePosition;
+            _minScreenPosition = minPossiblePosition;
             _handler = handler;
             _handler.OnGameOver += OnGameOver;
         }
@@ -47,7 +45,7 @@ namespace Bubbles.Abstract
         public virtual void Pop()
         {
             _collider.enabled = false;
-            _animator.SetTrigger(PopAnimation);
+            Poped?.Invoke();
             _audio.Play();
         }
 
@@ -63,15 +61,10 @@ namespace Bubbles.Abstract
             Pop();
         }
 
-        private void DestroyObjectOnPopAnimationEnds()
-        {
-            Destroy(gameObject);
-        }
-
         private bool IsOnScreen()
         {
-            _screenPoint = _camera.WorldToViewportPoint(transform.position);
-            return _screenPoint.y < 1.1f && _screenPoint.y > -1.1f;
+            var currentPosition = transform.position.y;
+            return currentPosition < _maxScreenPosition && currentPosition > _minScreenPosition;
         }
 
         private void OnDisable()

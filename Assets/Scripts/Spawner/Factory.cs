@@ -11,6 +11,7 @@ namespace Spawner
    {
       [Header("Core")]
       [SerializeField] private Camera _camera;
+      [SerializeField] private ScreenBoundary _boundary;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
       [SerializeField] private GameOverHandler _gameOverHandler;
       [SerializeField] private float _speedMultiplier = 0.2f;
@@ -46,7 +47,7 @@ namespace Spawner
       {
          var bubble = CreateBubble();
          
-         bubble.Init(_camera, _gameOverHandler);
+         bubble.Init(_boundary.GetTopBoundariesPosition(), _boundary.GetBottomBoundariesPosition(), _gameOverHandler);
          SetRandomAttributes(bubble);
          
          return bubble;

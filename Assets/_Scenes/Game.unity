@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 173295455}
   - component: {fileID: 173295457}
   - component: {fileID: 173295456}
+  - component: {fileID: 173295458}
   m_Layer: 0
   m_Name: _Level
   m_TagString: Untagged
@@ -214,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173295453}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 566.11743, y: 1121.4407, z: -393.83154}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -263,6 +264,19 @@ MonoBehaviour:
   _gameOverPanel: {fileID: 2142471942}
   _raycaster: {fileID: 2007246505}
   _spawner: {fileID: 1402116792}
+--- !u!114 &173295458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173295453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880114ac0d1f49cd84ae5f3e8dbf04e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
 --- !u!1 &210830733
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1402116792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.52, z: 0}
+  m_LocalPosition: {x: 0, y: -6.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1810,6 +1824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
+  _boundary: {fileID: 173295458}
   _defaultBubblePrefab: {fileID: 4641372985160132671, guid: 6596590b68bd443c2917de3f1882d85f,
     type: 3}
   _gameOverHandler: {fileID: 173295457}
