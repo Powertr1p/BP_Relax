@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slowStateToggler: {fileID: 803708300}
+  _gameOverHandler: {fileID: 173295457}
 --- !u!114 &173295456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,7 +376,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ff33bd0f2a08445dfbcd4e6b13a0a533, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

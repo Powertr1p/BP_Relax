@@ -1,4 +1,5 @@
-﻿using PlayerInput;
+﻿using System;
+using PlayerInput;
 using UI.TimeCounter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,8 @@ namespace Core
         [SerializeField] private TapRaycaster _raycaster;
         
         private TimeCounter _timeCounter;
+
+        public event Action OnGameOver;
 
         private void Awake()
         {
@@ -37,6 +40,7 @@ namespace Core
         {
             _gameOverPanel.SetActive(true);
             _raycaster.gameObject.SetActive(false);
+            OnGameOver?.Invoke();
         }
     
         private void OnDisable()

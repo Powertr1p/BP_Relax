@@ -6,16 +6,22 @@ using UnityEngine;
 
 namespace Core
 {
-    public class GameModeHandler : MonoBehaviour
+    public class GameStateHandler : MonoBehaviour
     {
         [SerializeField] private SlowStateToggler _slowStateToggler;
-
+        [SerializeField] private GameOverHandler _gameOverHandler;
         public static GameState CurrentGameState { get; private set; }
 
         private void OnEnable()
         {
             _slowStateToggler.SlowStateEnabled += OnSlowStateEnabled;
-            _slowStateToggler.SlowStateDisabled += OnSlowStateDisabled;
+            _slowStateToggler.SlowStateDisabled += OnNormalState;
+            _gameOverHandler.OnGameOver += OnGameOver;
+        }
+
+        private void Start()
+        {
+            OnNormalState();
         }
 
         private void Update()
@@ -36,16 +42,23 @@ namespace Core
             Time.timeScale = 0.25f;
         }
 
-        private void OnSlowStateDisabled()
+        private void OnNormalState()
         {
             CurrentGameState = GameState.NormalState;
             Time.timeScale = 1f;
         }
 
+        private void OnGameOver()
+        {
+            CurrentGameState = GameState.GameOver;
+            Time.timeScale = 0f;
+        }
+
         private void OnDisable()
         {
             _slowStateToggler.SlowStateEnabled -= OnSlowStateEnabled;
-            _slowStateToggler.SlowStateDisabled -= OnSlowStateDisabled;
+            _slowStateToggler.SlowStateDisabled -= OnNormalState;
+            _gameOverHandler.OnGameOver -= OnGameOver;
         }
     }
 
@@ -53,6 +66,7 @@ namespace Core
     {
         NormalState,
         SlowState,
+        GameOver
     }
 }
 

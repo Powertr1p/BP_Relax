@@ -11,11 +11,11 @@ namespace PlayerInput
         
         private void Update()
         {
-            if (GameModeHandler.CurrentGameState == GameState.NormalState)
+            if (GameStateHandler.CurrentGameState == GameState.NormalState)
                 if (Input.GetMouseButtonDown(0))
                     OnPlayerTap?.Invoke();
             
-            if (GameModeHandler.CurrentGameState == GameState.SlowState)
+            if (GameStateHandler.CurrentGameState == GameState.SlowState)
                 if (Input.GetMouseButton(0))
                     OnPlayerTap?.Invoke();
         }
