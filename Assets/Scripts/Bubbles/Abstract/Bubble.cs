@@ -31,7 +31,7 @@ namespace Bubbles.Abstract
                 Destroy(gameObject);
         }
 
-        public virtual void Init(float maxPossiblePosition, float minPossiblePosition, GameOverHandler handler)
+        public void Init(float maxPossiblePosition, float minPossiblePosition, GameOverHandler handler)
         {
             _maxScreenPosition = maxPossiblePosition;
             _minScreenPosition = minPossiblePosition;

@@ -10,7 +10,6 @@ namespace Spawner
    public class Factory : MonoBehaviour
    {
       [Header("Core")]
-      [SerializeField] private Camera _camera;
       [SerializeField] private ScreenBoundary _boundary;
       [SerializeField] private DefaultBubble _defaultBubblePrefab;
       [SerializeField] private GameOverHandler _gameOverHandler;
