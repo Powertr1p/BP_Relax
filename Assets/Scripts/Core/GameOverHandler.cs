@@ -49,7 +49,7 @@ namespace Core
 
         private IEnumerator WaitBeforeToggleGameOverPanel()
         {
-            yield return new WaitForSecondsRealtime(3f);
+            yield return new WaitForSecondsRealtime(4f);
             _gameOverPanel.SetActive(true);
         }
 

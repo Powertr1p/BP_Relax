@@ -14,12 +14,12 @@ namespace UI
         }
         
         private void CreateBonusMessage(int bonusModifier)
-       {
-           var message = Instantiate(_bonusMessagePrefab, transform);
-           message.text = $"x{bonusModifier}!";
-           
-           Destroy(message.gameObject, 1f);
-       }
+        { 
+            var message = Instantiate(_bonusMessagePrefab, transform); 
+            message.text = $"x{bonusModifier}!";
+            
+            Destroy(message.gameObject, 1f); 
+        }
 
         private void OnDisable()
         {
