@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using PlayerInput;
 using UI.TimeCounter;
 using UnityEngine;
@@ -39,10 +40,17 @@ namespace Core
 
         private void ToggleGameOver()
         {
-            _gameOverPanel.SetActive(true);
             _raycaster.gameObject.SetActive(false);
             _spawner.SetActive(false);
             OnGameOver?.Invoke();
+            
+            StartCoroutine(WaitBeforeToggleGameOverPanel());
+        }
+
+        private IEnumerator WaitBeforeToggleGameOverPanel()
+        {
+            yield return new WaitForSecondsRealtime(3f);
+            _gameOverPanel.SetActive(true);
         }
 
         private void OnDisable()

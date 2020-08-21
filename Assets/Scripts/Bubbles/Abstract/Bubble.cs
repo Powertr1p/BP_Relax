@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 namespace Bubbles.Abstract
 {
     [RequireComponent(typeof(Collider2D))]
-    
     public abstract class Bubble : MonoBehaviour, IPoppable
     {
         public event Action Poped;
