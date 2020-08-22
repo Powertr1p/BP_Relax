@@ -49,7 +49,7 @@ namespace Core
         {
             yield return new WaitForSecondsRealtime(0.5f);
             CurrentGameState = GameState.SlowState;
-            Time.timeScale = 0.25f;
+            Time.timeScale = _timeScaleInSlowState;
         }
 
         private void OnNormalState()
