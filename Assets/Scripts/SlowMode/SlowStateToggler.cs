@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Core;
 using UnityEngine;
 
 namespace SlowMode
