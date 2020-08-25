@@ -21,9 +21,21 @@ namespace PlayerInput
         private void OnEnable()
         {
             _detector.OnPlayerTap += TryDetectHit;
+            _detector.OnPlayerSwipe += TryDetectSwipeHit;
         }
 
-        private void TryDetectHit()
+        private void TryDetectHit(Vector3 position)
+        {
+            var hit = Physics2D.RaycastAll(position, Vector3.forward, _layerToDetect);
+
+                foreach (var obj in hit)
+                {
+                    if (obj.collider.TryGetComponent(out IPoppable bubble))
+                        OnHitDetected?.Invoke(bubble);
+                }
+        }
+        
+        private void TryDetectSwipeHit()
         {
             var hit = Physics2D.RaycastAll(_detector.GetTapPosition(), Vector3.forward, _layerToDetect);
 
@@ -36,6 +48,7 @@ namespace PlayerInput
 
         private void OnDisable()
         {
+            _detector.OnPlayerSwipe -= TryDetectSwipeHit;
             _detector.OnPlayerTap -= TryDetectHit;
         }
     }
