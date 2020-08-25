@@ -2,6 +2,7 @@
 using System.Collections;
 using Bubbles;
 using Core;
+using SlowMode;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -11,6 +12,7 @@ namespace Spawner
     public class Spawner : MonoBehaviour
     { 
         [SerializeField] private Factory _factory;
+        [SerializeField] private SlowStateToggler _slowStateToggler;
 
         [Header("Spawn Parameters")]
         [SerializeField] private float _minSpawnDelay = 0.1f;
@@ -22,13 +24,18 @@ namespace Spawner
         [SerializeField] private float _maxSlowStateBottomYPosition = 2;
         [SerializeField] private float _minSlowStateTopYPosition = 11;
         [SerializeField] private float _maxSlowStateTopYPosition = 13;
-        
+
+        private void OnEnable()
+        {
+            _slowStateToggler.SlowStateEnabled += SpawnAdditionalBubblesForSlowState;
+        }
+
         private void Start()
         {
             StartCoroutine(Spawn());
         }
         
-         public void SpawnAdditionalBubblesForSlowState()
+         private void SpawnAdditionalBubblesForSlowState()
          {
              for (int i = 0; i < 20; i++)
              {
@@ -60,6 +67,11 @@ namespace Spawner
          private Vector2 SetBubblePosition(float minYPosition, float maxYPosition)
          {
              return transform.position + new Vector3(Random.Range(-_spawnRadius, _spawnRadius), Random.Range(minYPosition, maxYPosition));
+         }
+
+         private void OnDisable()
+         {
+             _slowStateToggler.SlowStateEnabled -= SpawnAdditionalBubblesForSlowState;
          }
     }
 }
