@@ -1,5 +1,4 @@
-﻿using System;
-using Bubbles.Abstract;
+﻿using Bubbles.Abstract;
 using UnityEngine;
 
 namespace Bubbles

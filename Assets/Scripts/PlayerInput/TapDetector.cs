@@ -10,10 +10,13 @@ namespace PlayerInput
        
         public event Action<Vector3> OnPlayerTap;
         public event Action OnLongTapSuccess;
+        public event Action LongTouchContinue;
+        public event Action LongTouchCanceled;
 
         private float _lastTimePresses;
         private float _pressingTime;
         private bool _isPressing;
+        private bool _isLongTouchSuccessfull;
         
         private void Update()
         {
@@ -23,7 +26,7 @@ namespace PlayerInput
                         OnPlayerTap?.Invoke(_camera.ScreenToWorldPoint(Input.touches[i].position));
             
             if (GameStateHandler.CurrentGameState == GameState.SlowState)
-                if (Input.GetMouseButton(0))
+                if (Input.GetTouch(0).phase == TouchPhase.Moved)
                     OnPlayerTap?.Invoke(GetTapPosition());
             
             CheckForLongTap();
@@ -47,16 +50,23 @@ namespace PlayerInput
             if (_isPressing)
             {
                 _pressingTime = Time.time - _lastTimePresses;
+                
+                if (_pressingTime > 0.5f)
+                    LongTouchContinue?.Invoke();
+                
                 if (_pressingTime > 3f)
                 {
                     OnLongTapSuccess?.Invoke();
+                    _isLongTouchSuccessfull = true;
                     _isPressing = false;
                 }
             }
             
-            if (Input.GetTouch(0).phase == TouchPhase.Ended)
+            if (Input.GetTouch(0).phase == TouchPhase.Ended && !_isLongTouchSuccessfull)
             {
+                LongTouchCanceled?.Invoke();
                 _isPressing = false;
+                _isLongTouchSuccessfull = false;
             }
         }
     }
