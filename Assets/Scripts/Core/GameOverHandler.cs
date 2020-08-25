@@ -13,6 +13,7 @@ namespace Core
         [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private TapRaycaster _raycaster;
         [SerializeField] private GameObject _spawner;
+        [SerializeField] private GameObject _circleEffect;
         
         private TimeCounter _timeCounter;
 
@@ -40,6 +41,7 @@ namespace Core
 
         private void ToggleGameOver()
         {
+            _circleEffect.SetActive(false);
             _raycaster.gameObject.SetActive(false);
             _spawner.SetActive(false);
             OnGameOver?.Invoke();

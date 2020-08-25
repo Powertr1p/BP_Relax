@@ -9,7 +9,7 @@ namespace UI
     {
         [SerializeField] private Score _gameScore;
         [SerializeField] private GameObject _starParticles;
-        
+
         [Header("Star Images")]
         [SerializeField] private Image _leftStar;
         [SerializeField] private Image _middleStar;

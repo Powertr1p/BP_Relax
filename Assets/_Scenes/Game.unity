@@ -268,6 +268,7 @@ MonoBehaviour:
   _gameOverPanel: {fileID: 2142471942}
   _raycaster: {fileID: 2007246505}
   _spawner: {fileID: 1402116792}
+  _circleEffect: {fileID: 1767801026}
 --- !u!114 &173295458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2784,7 +2785,7 @@ RectTransform:
   m_GameObject: {fileID: 1767801026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 1751836488}
   m_RootOrder: 5
@@ -3447,6 +3448,7 @@ MonoBehaviour:
   _gameScore: {fileID: 1751836489}
   _starParticles: {fileID: 4822237648924597893, guid: bb7416201b01f46ee9e637ee4028d948,
     type: 3}
+  _circleEffect: {fileID: 0}
   _leftStar: {fileID: 1471441486}
   _middleStar: {fileID: 420079549}
   _rightStar: {fileID: 483053739}
