@@ -12,8 +12,9 @@ namespace PlayerInput
         private void Update()
         {
             if (GameStateHandler.CurrentGameState == GameState.NormalState)
-                if (Input.GetMouseButtonDown(0))
-                    OnPlayerTap?.Invoke();
+                for (int i = 0; i < Input.touchCount; i++)
+                    if (Input.GetTouch(i).phase == TouchPhase.Began)
+                        OnPlayerTap?.Invoke();
             
             if (GameStateHandler.CurrentGameState == GameState.SlowState)
                 if (Input.GetMouseButton(0))
