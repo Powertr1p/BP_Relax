@@ -8,7 +8,6 @@ namespace PlayerInput
     {
         [SerializeField] private Camera _camera;
         public event Action<Vector3> OnPlayerTap;
-        public event Action OnPlayerSwipe;
 
         private void Update()
         {
@@ -19,12 +18,7 @@ namespace PlayerInput
             
             if (GameStateHandler.CurrentGameState == GameState.SlowState)
                 if (Input.GetMouseButton(0))
-                    OnPlayerSwipe?.Invoke();
-        }
-
-        public Touch[] GetTouches()
-        {
-            return Input.touches;
+                    OnPlayerTap?.Invoke(GetTapPosition());
         }
 
         public Vector3 GetTapPosition()
