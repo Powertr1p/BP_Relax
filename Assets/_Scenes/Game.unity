@@ -3297,6 +3297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
+  _holdTimeToSuccess: 3
 --- !u!4 &2007246507
 Transform:
   m_ObjectHideFlags: 0
@@ -3448,7 +3449,6 @@ MonoBehaviour:
   _gameScore: {fileID: 1751836489}
   _starParticles: {fileID: 4822237648924597893, guid: bb7416201b01f46ee9e637ee4028d948,
     type: 3}
-  _circleEffect: {fileID: 0}
   _leftStar: {fileID: 1471441486}
   _middleStar: {fileID: 420079549}
   _rightStar: {fileID: 483053739}

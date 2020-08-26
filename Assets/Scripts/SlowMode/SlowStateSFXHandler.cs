@@ -1,7 +1,6 @@
-using SlowMode;
 using UnityEngine;
 
-namespace UI
+namespace SlowMode
 {
     public class SlowStateSFXHandler : MonoBehaviour
     {

@@ -3,6 +3,7 @@ using System.Collections;
 using Core;
 using PlayerInput;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SlowMode
 {
@@ -13,13 +14,22 @@ namespace SlowMode
         public event Action SlowStateEnabled;
         public event Action SlowStateDisabled;
 
+        public bool CanActivate { get; private set; }
+
         private void OnEnable()
         {
             _tapDetector.OnLongTapSuccess += StartBehavior;
         }
 
-        public void StartBehavior()
+        private void Start()
         {
+            CanActivate = true;
+        }
+
+        private void StartBehavior()
+        {
+            if (!CanActivate) return;
+
             SlowStateEnabled?.Invoke();
             StartCoroutine(StartCountdownToDisableBehavior());
         }
@@ -33,6 +43,7 @@ namespace SlowMode
         private void EndBehavior()
         {
             SlowStateDisabled?.Invoke();
+            CanActivate = false;
         }
 
         private void OnDisable()

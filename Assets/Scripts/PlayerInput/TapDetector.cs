@@ -7,7 +7,7 @@ namespace PlayerInput
     public class TapDetector : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-       
+        [SerializeField] private float _holdTimeToSuccess = 3f;
         public event Action<Vector3> OnPlayerTap;
         public event Action OnLongTapSuccess;
         public event Action LongTouchContinue;
@@ -50,11 +50,11 @@ namespace PlayerInput
             if (_isPressing)
             {
                 _pressingTime = Time.time - _lastTimePresses;
-                
+
                 if (_pressingTime > 0.5f)
                     LongTouchContinue?.Invoke();
-                
-                if (_pressingTime > 3f)
+
+                if (_pressingTime >= _holdTimeToSuccess)
                 {
                     OnLongTapSuccess?.Invoke();
                     _isLongTouchSuccessfull = true;
