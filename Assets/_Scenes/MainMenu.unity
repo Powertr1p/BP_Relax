@@ -5683,7 +5683,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1656414721}
-        m_MethodName: LoadGame
+        m_MethodName: ShowAdsAndLoadGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
