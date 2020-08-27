@@ -42,5 +42,10 @@ namespace UI
         public void OnUnityAdsDidStart(string placementId)
         {
         }
+
+        private void OnDisable()
+        {
+            Advertisement.RemoveListener(this);
+        }
     }
 }

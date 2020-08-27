@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections;
+using Ads;
 using PlayerInput;
 using UI.TimeCounter;
 using UnityEngine;
+using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 namespace Core
 {
     [RequireComponent(typeof(TimeCounter))]
-    public class GameOverHandler : MonoBehaviour
+    public class GameOverHandler : MonoBehaviour, IUnityAdsListener
     {
         [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private TapRaycaster _raycaster;
@@ -24,12 +26,32 @@ namespace Core
             _timeCounter = GetComponent<TimeCounter>();
         }
 
+        private void Start()
+        {
+            Advertisement.AddListener(this);
+        }
+
         private void OnEnable()
         {
             _timeCounter.OnTimeIsUp += ToggleGameOver;
         }
 
-        public void Restart()
+        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
+        {
+            if (showResult == ShowResult.Finished)
+                Restart();
+            else if (showResult == ShowResult.Skipped)
+                Restart();
+            else
+                Debug.LogError("Error with shown ads");
+        }
+
+        public void ShowAdsAndRestart()
+        {
+            RegularAds.ShowAds();
+        }
+        
+        private void Restart()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -58,6 +80,21 @@ namespace Core
         private void OnDisable()
         {
             _timeCounter.OnTimeIsUp -= ToggleGameOver;
+            Advertisement.RemoveListener(this);
         }
+        
+        public void OnUnityAdsReady(string placementId)
+        {
+        }
+
+        public void OnUnityAdsDidError(string message)
+        {
+        }
+
+        public void OnUnityAdsDidStart(string placementId)
+        {
+        }
+
+      
     }
 }
