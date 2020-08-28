@@ -38,16 +38,25 @@ namespace Core
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
-            if (showResult == ShowResult.Finished)
-                Restart();
-            else if (showResult == ShowResult.Skipped)
-                Restart();
-            else
-                Debug.LogError("Error with shown ads");
+            switch (showResult)
+            {
+                case ShowResult.Finished:
+                    ApplicationStateHandler.TrackPlayerFocus = false;
+                    Restart();
+                    break;
+                case ShowResult.Skipped:
+                    ApplicationStateHandler.TrackPlayerFocus = false;
+                    Restart();
+                    break;
+                default:
+                    Debug.LogError("Error with shown ads");
+                    break;
+            }
         }
 
         public void ShowAdsAndRestart()
         {
+            ApplicationStateHandler.TrackPlayerFocus = false;
             RegularAds.ShowAds();
         }
         
