@@ -103,7 +103,5 @@ namespace Core
         public void OnUnityAdsDidStart(string placementId)
         {
         }
-
-      
     }
 }

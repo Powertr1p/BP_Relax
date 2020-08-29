@@ -39,7 +39,7 @@ namespace PlayerInput
 
         private void CheckForLongTap()
         {
-            if (GameStateHandler.CurrentGameState == GameState.SlowState || Input.touchCount <= 0) return;
+            if (GameStateHandler.CurrentGameState == GameState.SlowState || Input.touchCount < 1) return;
 
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
