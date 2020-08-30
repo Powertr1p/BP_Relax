@@ -11,6 +11,8 @@ namespace SlowMode
     {
         [SerializeField] private float _timeInSlowState = 7f;
         [SerializeField] private TapDetector _tapDetector;
+        [SerializeField] private GameObject _disabledSlowMoTipText;
+        [SerializeField] private GameObject _activatedSlowMoTipText;
         public event Action SlowStateEnabled;
         public event Action SlowStateDisabled;
 
@@ -30,6 +32,9 @@ namespace SlowMode
         {
             if (!CanActivate) return;
 
+            _disabledSlowMoTipText.SetActive(false);
+            _activatedSlowMoTipText.SetActive(true);
+            
             SlowStateEnabled?.Invoke();
             StartCoroutine(StartCountdownToDisableBehavior());
         }
@@ -42,6 +47,7 @@ namespace SlowMode
 
         private void EndBehavior()
         {
+            _activatedSlowMoTipText.SetActive(false);
             SlowStateDisabled?.Invoke();
             CanActivate = false;
         }
