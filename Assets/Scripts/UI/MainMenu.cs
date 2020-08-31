@@ -26,10 +26,17 @@ namespace UI
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
-            if (showResult == ShowResult.Finished)
-                LoadGame();
-            else if (showResult == ShowResult.Skipped)
-                LoadGame();
+            switch (showResult)
+            {
+                case ShowResult.Finished:
+                case ShowResult.Skipped:
+                    LoadGame();
+                    break;
+                case ShowResult.Failed:
+                    Debug.LogError("Ad failed");
+                    LoadGame();
+                    break;
+            }
         }
         
         public void OnUnityAdsReady(string placementId)
