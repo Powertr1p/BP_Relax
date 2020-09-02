@@ -7,21 +7,14 @@ namespace UI
 {
     public class MainMenu : MonoBehaviour, IUnityAdsListener
     {
+        [SerializeField] private GameObject _creditsPanel;
+        
+        private bool _isCreditsOpen; 
+        
         private void Start()
         {
             Advertisement.AddListener(this);
             StartCoroutine(BannerAds.ShowBanner());
-        }
-
-        private void LoadGame()
-        {
-            Advertisement.Banner.Hide();
-            SceneManager.LoadScene("Game", LoadSceneMode.Single);
-        }
-
-        public void ShowAdsAndLoadGame()
-        {
-            RegularAds.ShowAds();
         }
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
@@ -49,6 +42,24 @@ namespace UI
 
         public void OnUnityAdsDidStart(string placementId)
         {
+        }
+
+        public void ShowAdsAndLoadGame()
+        {
+            RegularAds.ShowAds();
+        }
+        
+        
+        public void ShowCredits()
+        {
+            _creditsPanel.SetActive(!_isCreditsOpen);
+            _isCreditsOpen = !_isCreditsOpen;
+        }
+        
+        private void LoadGame()
+        {
+            Advertisement.Banner.Hide();
+            SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
 
         private void OnDisable()
