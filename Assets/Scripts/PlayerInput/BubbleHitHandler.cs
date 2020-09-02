@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace PlayerInput
 {
-    public class OnBubbleHitHandler : MonoBehaviour
+    public class BubbleHitHandler : MonoBehaviour
     {
         [SerializeField] private TapRaycaster _raycaster;
 

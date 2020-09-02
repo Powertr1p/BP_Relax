@@ -6,7 +6,7 @@ namespace UI
 {
     public class Score : MonoBehaviour
     {
-        [SerializeField] private OnBubbleHitHandler _hitHandler;
+        [SerializeField] private BubbleHitHandler _hitHandler;
         [SerializeField] private PopComboDetector.PopComboDetector _comboDetector;
         [SerializeField] private TextMeshProUGUI _scoreText;
 

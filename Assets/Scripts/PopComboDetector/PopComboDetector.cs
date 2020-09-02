@@ -6,7 +6,7 @@ namespace PopComboDetector
 {
     public class PopComboDetector : MonoBehaviour
     {
-        [SerializeField] private OnBubbleHitHandler _handler;
+        [SerializeField] private BubbleHitHandler _handler;
         
         [SerializeField] private float _timeBetweenPopToEarnCombo = 0.1f;
         [SerializeField] private int _streakToEarnBonus = 3;
