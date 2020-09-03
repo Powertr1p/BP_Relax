@@ -12,6 +12,7 @@ namespace VFX
         [SerializeField] private Image _effectImage;
         [SerializeField] private TapDetector _tapDetector;
         [SerializeField] private SlowStateToggler _slowStateToggler;
+        [SerializeField] private Vector3 _sizeToAdd = new Vector3(0.3f, 0.3f, 0);
 
         private IEnumerator _coroutine;
         private Color _defaultColor;
@@ -41,7 +42,7 @@ namespace VFX
 
             _effectImage.color = _defaultColor;
             _effectImage.transform.position = new Vector3(_tapDetector.GetTapPosition().x, _tapDetector.GetTapPosition().y, 0);
-            _effectImage.transform.localScale += new Vector3(0.3f,0.3f,0);
+            _effectImage.transform.localScale += _sizeToAdd;
             Handheld.Vibrate();
         }
 
@@ -59,7 +60,7 @@ namespace VFX
         {
             while (_effectImage.transform.localScale.x > -0.1f)
             {
-                _effectImage.transform.localScale -= new Vector3(0.3f, 0.3f, 0);
+                _effectImage.transform.localScale -= _sizeToAdd;
                 yield return new WaitForSecondsRealtime(0);
             }
 
