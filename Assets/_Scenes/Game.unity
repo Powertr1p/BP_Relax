@@ -6424,7 +6424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682124715}
   m_LocalRotation: {x: -0, y: -0, z: -0.6954428, w: 0.7185815}
-  m_LocalPosition: {x: -12.07, y: -0.82, z: -72.96875}
+  m_LocalPosition: {x: -12.17, y: -0.82, z: -72.96875}
   m_LocalScale: {x: 5.7800775, y: 1.9716069, z: 4.0209236}
   m_Children: []
   m_Father: {fileID: 1357356960}
@@ -6793,6 +6793,7 @@ MonoBehaviour:
   _effectImage: {fileID: 1767801028}
   _tapDetector: {fileID: 2007246506}
   _slowStateToggler: {fileID: 803708300}
+  _sizeToAdd: {x: 0.3, y: 0.3, z: 0}
 --- !u!1 &846270284
 GameObject:
   m_ObjectHideFlags: 0

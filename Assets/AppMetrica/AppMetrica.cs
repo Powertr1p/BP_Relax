@@ -28,7 +28,7 @@ public class AppMetrica : MonoBehaviour
     private uint SessionTimeoutSec = 10;
 
     [SerializeField]
-    private bool LocationTracking = true;
+    private bool LocationTracking = false;
 
     [SerializeField]
     private bool Logs = true;
