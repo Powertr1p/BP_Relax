@@ -1,3 +1,4 @@
+using System;
 using Ads;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -26,7 +27,9 @@ namespace UI
                     LoadGame();
                     break;
                 case ShowResult.Failed:
-                    Debug.LogError("Ad failed");
+                    LoadGame();
+                    break;
+                default:
                     LoadGame();
                     break;
             }
@@ -38,6 +41,7 @@ namespace UI
 
         public void OnUnityAdsDidError(string message)
         {
+            LoadGame();
         }
 
         public void OnUnityAdsDidStart(string placementId)
