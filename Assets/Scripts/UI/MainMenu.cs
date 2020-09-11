@@ -26,7 +26,6 @@ namespace UI
                     LoadGame();
                     break;
                 case ShowResult.Failed:
-                    Debug.LogError("Ad failed");
                     LoadGame();
                     break;
             }
@@ -38,6 +37,7 @@ namespace UI
 
         public void OnUnityAdsDidError(string message)
         {
+            LoadGame();
         }
 
         public void OnUnityAdsDidStart(string placementId)
@@ -46,10 +46,12 @@ namespace UI
 
         public void ShowAdsAndLoadGame()
         {
-            RegularAds.ShowAds();
+            if (Advertisement.IsReady())
+                RegularAds.ShowAds();
+            else
+                LoadGame();
         }
-        
-        
+
         public void ShowCredits()
         {
             _creditsPanel.SetActive(!_isCreditsOpen);
