@@ -25,13 +25,13 @@ namespace Ads
 
         private IEnumerator WaitForAdsInit()
         {
-            float count = 0f;
+            var count = 0f;
             while (!Advertisement.isInitialized)
             {
                 yield return new WaitForSeconds(0.1f);
                 count += 0.1f;
 
-                if (count >= 5f)
+                if (count >= 2f)
                     break;
             }
 
