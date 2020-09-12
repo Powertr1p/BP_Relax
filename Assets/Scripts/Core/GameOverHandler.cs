@@ -18,6 +18,7 @@ namespace Core
         [SerializeField] private GameObject _circleEffect;
         
         private TimeCounter _timeCounter;
+        private int _sceneIndexToLoadAfterAds;
 
         public event Action OnGameOver;
 
@@ -38,36 +39,27 @@ namespace Core
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
-            switch (showResult)
-            {
-                case ShowResult.Finished:
-                    ApplicationStateHandler.TrackPlayerFocus = false;
-                    Restart();
-                    break;
-                case ShowResult.Skipped:
-                    ApplicationStateHandler.TrackPlayerFocus = false;
-                    Restart();
-                    break;
-                default:
-                    Debug.LogError("Error with shown ads");
-                    break;
-            }
+            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
-        public void ShowAdsAndRestart()
+        public void Restart()
         {
-            ApplicationStateHandler.TrackPlayerFocus = false;
-            RegularAds.ShowAds();
-        }
-        
-        private void Restart()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            _sceneIndexToLoadAfterAds = SceneManager.GetActiveScene().buildIndex;
+           
+            if (Advertisement.IsReady() && Advertisement.isInitialized)
+                RegularAds.ShowAds();
+            else
+                SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void ToMainMenu()
         {
-            SceneManager.LoadScene("MainMenu");
+            _sceneIndexToLoadAfterAds = 0;
+            
+            if (Advertisement.IsReady() && Advertisement.isInitialized)
+                RegularAds.ShowAds();
+            else
+                SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         private void ToggleGameOver()
@@ -98,6 +90,7 @@ namespace Core
 
         public void OnUnityAdsDidError(string message)
         {
+            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void OnUnityAdsDidStart(string placementId)

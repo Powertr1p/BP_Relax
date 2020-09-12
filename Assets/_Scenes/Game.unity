@@ -8775,7 +8775,7 @@ GameObject:
   - component: {fileID: 1792619108}
   - component: {fileID: 1792619107}
   m_Layer: 11
-  m_Name: MainMenu
+  m_Name: Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9132,7 +9132,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 173295457}
-        m_MethodName: ShowAdsAndRestart
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
