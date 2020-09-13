@@ -14,7 +14,7 @@ namespace UI
       
       public void OpenStore()
       {
-         Application.OpenURL($"market://{_appLinks[Random.Range(0, _appLinks.Length)]}");
+         Application.OpenURL($"market://{_appLinks[Random.Range(0, _appLinks.Length)]}"); 
       }
    }
 }
