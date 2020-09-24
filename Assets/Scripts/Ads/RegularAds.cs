@@ -9,8 +9,7 @@ namespace Ads
         
         public static void ShowAds()
         {
-            if (Advertisement.IsReady(_placementID))
-                Advertisement.Show(_placementID);
+            Advertisement.Show(_placementID);
         }
     }
 }

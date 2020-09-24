@@ -1,4 +1,3 @@
-using System;
 using Ads;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -6,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace UI
 {
-    public class MainMenu : MonoBehaviour, IUnityAdsListener
+    public class MainMenu : MonoBehaviour
     {
         [SerializeField] private GameObject _creditsPanel;
         
@@ -14,45 +13,8 @@ namespace UI
         
         private void Start()
         {
-            Advertisement.AddListener(this);
             StartCoroutine(BannerAds.ShowBanner());
         }
-
-        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
-        {
-            switch (showResult)
-            {
-                case ShowResult.Finished:
-                case ShowResult.Skipped:
-                    LoadGame();
-                    break;
-                case ShowResult.Failed:
-                    LoadGame();
-                    break;
-                default:
-                    LoadGame();
-                    break;
-            }
-        }
-        
-        public void OnUnityAdsReady(string placementId)
-        {
-        }
-
-        public void OnUnityAdsDidError(string message)
-        {
-            LoadGame();
-        }
-
-        public void OnUnityAdsDidStart(string placementId)
-        {
-        }
-
-        public void ShowAdsAndLoadGame()
-        {
-            RegularAds.ShowAds();
-        }
-        
         
         public void ShowCredits()
         {
@@ -60,15 +22,10 @@ namespace UI
             _isCreditsOpen = !_isCreditsOpen;
         }
         
-        private void LoadGame()
+        public void LoadGame()
         {
             Advertisement.Banner.Hide();
             SceneManager.LoadScene("Game", LoadSceneMode.Single);
-        }
-
-        private void OnDisable()
-        {
-            Advertisement.RemoveListener(this);
         }
     }
 }

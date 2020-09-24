@@ -7,7 +7,7 @@
  */
 
 // Uncomment the following line to disable location tracking
-// #define APP_METRICA_TRACK_LOCATION_DISABLED
+ #define APP_METRICA_TRACK_LOCATION_DISABLED
 // or just add APP_METRICA_TRACK_LOCATION_DISABLED into
 // Player Settings -> Other Settings -> Scripting Define Symbols
 
