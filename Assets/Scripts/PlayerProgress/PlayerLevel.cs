@@ -4,46 +4,36 @@ using UnityEngine;
 
 namespace PlayerProgress
 {
-    [RequireComponent(typeof(PlayerProgress))]
-    public class PlayerLevel : MonoBehaviour
+    [RequireComponent(typeof(PlayerLevelProgress))]
+    public class PlayerLevel : MonoBehaviour //TODO: Delete MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _playerLevelText;
-
-        private PlayerProgress _playerProgress;
+        private PlayerLevelProgress _playerLevelProgress;
         
         private int _currentPlayerLevel;
 
         private void Awake()
         {
-            _playerProgress = GetComponent<PlayerProgress>();
+            _playerLevelProgress = GetComponent<PlayerLevelProgress>();
         }
 
         private void OnEnable()
         {
-            _playerProgress.OnFullLevelProgress += IncreasePlayerLevel;
-            _playerProgress.OnFullLevelProgress += UpdatePlayerLevelText;
+            _playerLevelProgress.OnFullLevelProgress += IncreasePlayerLevelLevel;
         }
 
-        private void Start()
+        private void Start() //TODO: get this from load file
         {
             _currentPlayerLevel = 1;
-            UpdatePlayerLevelText();
         }
     
-        private void IncreasePlayerLevel()
+        private void IncreasePlayerLevelLevel()
         {
             _currentPlayerLevel++;
         }
 
-        private void UpdatePlayerLevelText()
-        {
-            _playerLevelText.text = $"Level {_currentPlayerLevel.ToString()}";
-        }
-
         private void OnDisable()
         {
-            _playerProgress.OnFullLevelProgress -= IncreasePlayerLevel;
-            _playerProgress.OnFullLevelProgress += UpdatePlayerLevelText;
+            _playerLevelProgress.OnFullLevelProgress -= IncreasePlayerLevelLevel;
         }
     }
 }
