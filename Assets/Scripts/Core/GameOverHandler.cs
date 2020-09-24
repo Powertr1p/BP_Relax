@@ -27,26 +27,27 @@ namespace Core
             _timeCounter = GetComponent<TimeCounter>();
         }
 
+        private void OnEnable()
+        {
+            _timeCounter.OnTimeIsUp += ToggleGameOver;
+        }
+        
         private void Start()
         {
             Advertisement.AddListener(this);
         }
 
-        private void OnEnable()
-        {
-            _timeCounter.OnTimeIsUp += ToggleGameOver;
-        }
-
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void Restart()
         {
-            _sceneIndexToLoadAfterAds = SceneManager.GetActiveScene().buildIndex;
+            _sceneIndexToLoadAfterAds = 1;
            
-            if (Advertisement.IsReady() && Advertisement.isInitialized)
+            if (Advertisement.IsReady())
                 RegularAds.ShowAds();
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
@@ -56,7 +57,7 @@ namespace Core
         {
             _sceneIndexToLoadAfterAds = 0;
             
-            if (Advertisement.IsReady() && Advertisement.isInitialized)
+            if (Advertisement.IsReady())
                 RegularAds.ShowAds();
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
