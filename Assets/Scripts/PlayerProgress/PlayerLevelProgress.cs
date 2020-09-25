@@ -15,20 +15,13 @@ namespace PlayerProgress
         private void Start() //TODO: get this from load file
         {
             _currentPlayerLevelProgress = 0;
+            IncrementProgress(1.5f);
         }
 
-        private void IncreaseProgress(float amount) //TODO: Call this when player gets score
+        private void IncrementProgress(float amount) //TODO: Call this when player gets score
         {
             _currentPlayerLevelProgress += amount;
-            OnProgressIncreased?.Invoke(amount);
-
-            if (_currentPlayerLevelProgress >= _maxPossiblePlayerProgress)
-            {
-                OnFullLevelProgress?.Invoke();
-                float residualValue = _currentPlayerLevelProgress - _maxPossiblePlayerProgress;
-                _currentPlayerLevelProgress = residualValue;
-                OnProgressIncreased?.Invoke(residualValue);
-            }
+            OnProgressIncreased?.Invoke(_currentPlayerLevelProgress);
         }
     }
 }
