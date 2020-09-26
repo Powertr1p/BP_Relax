@@ -2,6 +2,7 @@
 using System.Collections;
 using Ads;
 using PlayerInput;
+using PlayerProgress;
 using UI.TimeCounter;
 using UnityEngine;
 using UnityEngine.Advertisements;
@@ -16,7 +17,7 @@ namespace Core
         [SerializeField] private TapRaycaster _raycaster;
         [SerializeField] private GameObject _spawner;
         [SerializeField] private GameObject _circleEffect;
-        
+
         private TimeCounter _timeCounter;
         private int _sceneIndexToLoadAfterAds;
 

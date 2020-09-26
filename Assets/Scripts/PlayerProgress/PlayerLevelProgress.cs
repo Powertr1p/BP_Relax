@@ -15,7 +15,6 @@ namespace PlayerProgress
         private void Start() //TODO: get this from load file
         {
             _currentPlayerLevelProgress = 0;
-            IncrementProgress(1.5f);
         }
 
         private void IncrementProgress(float amount) //TODO: Call this when player gets score
