@@ -2,7 +2,6 @@
 using System.Collections;
 using Ads;
 using PlayerInput;
-using PlayerProgress;
 using UI.TimeCounter;
 using UnityEngine;
 using UnityEngine.Advertisements;

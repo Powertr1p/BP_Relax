@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
-using UnityEngine;
 using PlayerProgress;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -10,30 +10,37 @@ namespace UI
     public class PlayerProgressDisplay : MonoBehaviour
     {
         [SerializeField] private Slider _progressBarSlider;
-        [SerializeField] private PlayerLevelProgress _playerLevelProgress;
         [SerializeField] private float _fillSpeed = 0.5f;
         [SerializeField] private TextMeshProUGUI _playerLevel;
         [SerializeField] private Score _score;
+        [SerializeField] private PlayerProgressStorage _sessionData;
 
-        private float _currentPlayerLevel;
+        private int _currentPlayerLevel;
         private float _targetProgress;
+
+        public float GetScoreFormula() => _score.GetScore / 10000f;
 
         private void OnEnable()
         {
-            _playerLevelProgress.OnProgressIncreased += IncrementProgress;
             StartCoroutine(WaitAndFillProgress());
         }
 
-        private IEnumerator WaitAndFillProgress()
+        private void Awake()
         {
-            yield return new WaitForSeconds(3f);
-            IncrementProgress(_score.GetScore / 10000f);
+            _currentPlayerLevel = _sessionData.Level;
+            _progressBarSlider.value = _sessionData.Progress;
         }
 
         private void Start()
         {
-            _currentPlayerLevel = 1;
             UpdateCurrentLevel();
+        }
+        
+        private IEnumerator WaitAndFillProgress()
+        {
+            _sessionData.UpdateCurrentData(_currentPlayerLevel, _progressBarSlider.value + GetScoreFormula());
+            yield return new WaitForSeconds(2.2f);
+            IncrementProgress(GetScoreFormula());
         }
 
         private void UpdateCurrentLevel()
@@ -43,6 +50,12 @@ namespace UI
 
         private void Update()
         {
+           MoveSlider();
+           UpdateCurrentLevel();
+        }
+
+        private void MoveSlider()
+        {
             if (_progressBarSlider.value < _targetProgress)
                 _progressBarSlider.value += _fillSpeed * Time.deltaTime;
 
@@ -51,13 +64,12 @@ namespace UI
                 _targetProgress -= _progressBarSlider.value;
                 _progressBarSlider.value = 0;
                 _currentPlayerLevel++;
-                UpdateCurrentLevel();
             }
         }
 
         private void IncrementProgress(float amount)
         {
-            _targetProgress =  amount;
+            _targetProgress = _progressBarSlider.value + amount;
         }
     }
 }

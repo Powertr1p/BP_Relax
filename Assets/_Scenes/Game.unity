@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 173295457}
   - component: {fileID: 173295456}
   - component: {fileID: 173295458}
+  - component: {fileID: 173295459}
   m_Layer: 0
   m_Name: _Level
   m_TagString: Untagged
@@ -356,6 +357,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
+--- !u!114 &173295459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173295453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bc086b7b0b45ef8503cc3cd4a27699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &175952798
 GameObject:
   m_ObjectHideFlags: 0
@@ -9192,8 +9205,6 @@ GameObject:
   - component: {fileID: 2007246505}
   - component: {fileID: 2007246508}
   - component: {fileID: 2007246509}
-  - component: {fileID: 2007246510}
-  - component: {fileID: 2007246511}
   m_Layer: 0
   m_Name: PlayerHandler
   m_TagString: Untagged
@@ -9273,30 +9284,6 @@ MonoBehaviour:
     type: 3}
   _slowStateToggler: {fileID: 803708300}
   _tapDetector: {fileID: 2007246506}
---- !u!114 &2007246510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007246504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8573d2a27a3a1492fb1471e8856cd8a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2007246511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007246504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c7534550c32346f8aee2ca57ab60654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2121436796
 GameObject:
   m_ObjectHideFlags: 0
@@ -9802,10 +9789,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBarSlider: {fileID: 3946102128711071880}
-  _playerLevelProgress: {fileID: 2007246510}
   _fillSpeed: 0.5
   _playerLevel: {fileID: 3946102130594299706}
   _score: {fileID: 1751836489}
+  _sessionData: {fileID: 173295459}
 --- !u!1 &3946102129027871891
 GameObject:
   m_ObjectHideFlags: 0
