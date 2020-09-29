@@ -10,9 +10,11 @@ namespace PlayerProgress
         public float Progress { get; private set; }
 
         private float _progressMaxValue = 1f;
+        private SavingSystem _savingSystem;
 
         private void Awake()
         {
+            _savingSystem = new SavingSystem();
             LoadPlayerData();
         }
 
@@ -24,7 +26,7 @@ namespace PlayerProgress
         
         private void LoadPlayerData()
         {
-            var loadedData = SavingSystem.LoadPlayer();
+            var loadedData = _savingSystem.LoadPlayer();
             Level = loadedData.PlayerLevel;
             Progress = loadedData.PlayerLevelProgress;
         }
@@ -38,7 +40,7 @@ namespace PlayerProgress
             }
 
             var currentData = new PlayerData(Level, Progress);
-            SavingSystem.SavePlayer(currentData);
+            _savingSystem.SavePlayer(currentData);
         }
 
         private void OnDisable()

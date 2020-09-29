@@ -4,35 +4,43 @@ using UnityEngine;
 
 namespace PlayerProgress
 {
-    public static class SavingSystem
+    public class SavingSystem
     {
-        public static void SavePlayer(PlayerData progress)
+        private const string SavePath = "playerSavedData.data";
+        
+        public void SavePlayer(PlayerData progress)
         {
+            string path = Path.Combine(Application.persistentDataPath, SavePath);
+
             BinaryFormatter formatter = new BinaryFormatter();
-            string path = Application.persistentDataPath + "/playerSavedData.data";
-            FileStream stream = new FileStream(path, FileMode.Create);
-            
             PlayerData data = new PlayerData(progress.PlayerLevel, progress.PlayerLevelProgress);
             
-            formatter.Serialize(stream, data);
-            stream.Close();
+            using (FileStream stream = new FileStream(path, FileMode.Create))
+            {
+                formatter.Serialize(stream, data);
+            }
         }
 
-        public static PlayerData LoadPlayer()
+        public PlayerData LoadPlayer()
         {
-            string path = Application.persistentDataPath + "/playerSavedData.data";
+            string path = Path.Combine(Application.persistentDataPath, SavePath);
             if (File.Exists(path))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream stream = new FileStream(path, FileMode.Open);
-                PlayerData data = formatter.Deserialize(stream) as PlayerData;
-                stream.Close();
-                return data;
+                
+                using (FileStream stream = new FileStream(path, FileMode.Open))
+                {
+                    PlayerData data = formatter.Deserialize(stream) as PlayerData;
+                    return data;
+                }
             }
-            else
-            {
-                return new PlayerData(1,0f);
-            }
+
+            return GetNewPlayerData();
+        }
+
+        private PlayerData GetNewPlayerData()
+        {
+            return new PlayerData(1,0f);
         }
     }
 }
