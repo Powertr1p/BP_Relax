@@ -9,6 +9,8 @@ namespace PlayerProgress
         public int Level { get; private set; }
         public float Progress { get; private set; }
 
+        private float _progressMaxValue = 1f;
+
         private void Awake()
         {
             LoadPlayerData();
@@ -29,9 +31,9 @@ namespace PlayerProgress
 
         private void StorageCurrentData()
         {
-            while (Progress >= 1f)
+            while (Progress >= _progressMaxValue)
             {
-                Progress -= 1f;
+                Progress -= _progressMaxValue;
                 Level++;
             }
 
