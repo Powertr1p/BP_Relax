@@ -39,7 +39,7 @@ namespace VFX
             do
             {
                 yield return new WaitForSecondsRealtime(0);
-                _effectImage.transform.localScale += new Vector3(0.5f, 0.5f, 0);
+                _effectImage.transform.localScale += new Vector3(0.7f, 0.7f, 0);
             } while (_effectImage.transform.localScale.x < 50f);
         }
 
