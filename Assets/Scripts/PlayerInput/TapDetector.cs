@@ -44,7 +44,7 @@ namespace PlayerInput
         {
             if (GameStateHandler.CurrentGameState == GameState.SlowState || Input.touchCount < 1) return;
 
-            if (Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButton(0)) //TODO: Delete before build
             {
                 _isPressing = true;
                 _lastTimePresses = Time.time;
