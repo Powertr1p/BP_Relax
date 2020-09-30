@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace PlayerProgress
 {
-    public class SavingSystem
+    public static class SavingSystem
     {
         private const string SavePath = "playerSavedData.data";
         
-        public void SavePlayer(PlayerData progress)
+        public static void SavePlayer(PlayerData progress)
         {
             string path = Path.Combine(Application.persistentDataPath, SavePath);
 
@@ -21,7 +21,7 @@ namespace PlayerProgress
             }
         }
 
-        public PlayerData LoadPlayer()
+        public static PlayerData LoadPlayer()
         {
             string path = Path.Combine(Application.persistentDataPath, SavePath);
             if (File.Exists(path))
@@ -38,7 +38,7 @@ namespace PlayerProgress
             return GetNewPlayerData();
         }
 
-        private PlayerData GetNewPlayerData()
+        private static PlayerData GetNewPlayerData()
         {
             return new PlayerData(1,0f);
         }

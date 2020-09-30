@@ -1,5 +1,3 @@
-using System;
-using UI;
 using UnityEngine;
 
 namespace PlayerProgress
@@ -10,11 +8,9 @@ namespace PlayerProgress
         public float Progress { get; private set; }
 
         private float _progressMaxValue = 1f;
-        private SavingSystem _savingSystem;
 
         private void Awake()
         {
-            _savingSystem = new SavingSystem();
             LoadPlayerData();
         }
 
@@ -26,7 +22,7 @@ namespace PlayerProgress
         
         private void LoadPlayerData()
         {
-            var loadedData = _savingSystem.LoadPlayer();
+            var loadedData = SavingSystem.LoadPlayer();
             Level = loadedData.PlayerLevel;
             Progress = loadedData.PlayerLevelProgress;
         }
@@ -40,7 +36,7 @@ namespace PlayerProgress
             }
 
             var currentData = new PlayerData(Level, Progress);
-            _savingSystem.SavePlayer(currentData);
+            SavingSystem.SavePlayer(currentData);
         }
 
         private void OnDisable()
