@@ -7,7 +7,7 @@ namespace PlayerInput
     public class TapDetector : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
-        [SerializeField] private float _holdTimeToSuccess = 3f;
+        [SerializeField] private float _holdTimeToSuccess = 2f;
         public event Action<Vector3> OnPlayerTap;
         public event Action OnLongTapSuccess;
         public event Action LongTouchContinue;
@@ -20,6 +20,9 @@ namespace PlayerInput
         
         private void Update()
         {
+            if (Input.GetMouseButtonDown(0)) //TODO: Delete before build
+                OnPlayerTap?.Invoke(_camera.ScreenToWorldPoint(Input.mousePosition)); //TODO: Delete before build
+            
             if (GameStateHandler.CurrentGameState == GameState.NormalState)
                 for (int i = 0; i < Input.touchCount; i++)
                     if (Input.GetTouch(i).phase == TouchPhase.Began)

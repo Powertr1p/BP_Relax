@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using PlayerInput;
 using SlowMode;
@@ -12,7 +11,7 @@ namespace VFX
         [SerializeField] private Image _effectImage;
         [SerializeField] private TapDetector _tapDetector;
         [SerializeField] private SlowStateToggler _slowStateToggler;
-        [SerializeField] private Vector3 _sizeToAdd = new Vector3(0.3f, 0.3f, 0);
+        [SerializeField] private Vector3 _sizeToAdd = new Vector3(0.1f, 0.1f, 0);
 
         private IEnumerator _coroutine;
         private Color _defaultColor;
@@ -24,9 +23,24 @@ namespace VFX
         
         private void OnEnable()
         {
+            _tapDetector.OnLongTapSuccess += FillScreenWithCircle;
             _tapDetector.LongTouchContinue += IncreaseCircle;
             _tapDetector.LongTouchCanceled += DecreaseCirle;
             _slowStateToggler.SlowStateDisabled += DecreaseCirle;
+        }
+
+        private void FillScreenWithCircle()
+        {
+            StartCoroutine(StartFillAnimation());
+        }
+
+        private IEnumerator StartFillAnimation()
+        {
+            do
+            {
+                yield return new WaitForSecondsRealtime(0);
+                _effectImage.transform.localScale += new Vector3(0.7f, 0.7f, 0);
+            } while (_effectImage.transform.localScale.x < 50f);
         }
 
         private void IncreaseCircle()
@@ -73,6 +87,7 @@ namespace VFX
             _tapDetector.LongTouchContinue -= IncreaseCircle;
             _tapDetector.LongTouchCanceled -= DecreaseCirle;
             _slowStateToggler.SlowStateDisabled -= DecreaseCirle;
+            _tapDetector.OnLongTapSuccess -= FillScreenWithCircle;
         }
     }
 }
