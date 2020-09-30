@@ -7009,7 +7009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pausePanel: {fileID: 1238433265}
-  _tapRaycaster: {fileID: 2007246504}
+  _playerInputHandler: {fileID: 2007246504}
 --- !u!114 &873697280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9241,7 +9241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
-  _holdTimeToSuccess: 3
+  _holdTimeToSuccess: 2
 --- !u!4 &2007246507
 Transform:
   m_ObjectHideFlags: 0

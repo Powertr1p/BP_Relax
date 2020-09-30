@@ -1,5 +1,6 @@
 using System.Collections;
 using SlowMode;
+using TMPro;
 using UI;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Core
 
         private void OnEnable()
         {
+            _gameOverHandler.OnAdsFinish += ResumeStateAfterAds;
             _slowStateToggler.SlowStateEnabled += OnSlowStateEnabled;
             _slowStateToggler.SlowStateDisabled += OnNormalState;
             _gameOverHandler.OnGameOver += OnGameOver;
@@ -29,6 +31,11 @@ namespace Core
         private void Start()
         {
             OnNormalState();
+        }
+
+        private void ResumeStateAfterAds()
+        {
+            CurrentGameState = GameState.NormalState;
         }
 
         private void Update()
@@ -79,6 +86,7 @@ namespace Core
         
         private void OnDisable()
         {
+            _gameOverHandler.OnAdsFinish -= ResumeStateAfterAds;
             _slowStateToggler.SlowStateEnabled -= OnSlowStateEnabled;
             _slowStateToggler.SlowStateDisabled -= OnNormalState;
             _gameOverHandler.OnGameOver -= OnGameOver;

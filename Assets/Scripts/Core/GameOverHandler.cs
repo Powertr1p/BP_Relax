@@ -17,6 +17,8 @@ namespace Core
         [SerializeField] private GameObject _spawner;
         [SerializeField] private GameObject _circleEffect;
 
+        public event Action OnAdsFinish;
+        
         private TimeCounter _timeCounter;
         private int _sceneIndexToLoadAfterAds;
 
@@ -39,7 +41,7 @@ namespace Core
 
         public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
         {
-            Time.timeScale = 1f;
+            OnAdsFinish?.Invoke();
             SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 

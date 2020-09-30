@@ -1,7 +1,6 @@
-using System;
-using PlayerInput;
 using UI;
 using UnityEngine;
+using UnityEngine.Advertisements;
 
 namespace Core
 {
@@ -11,6 +10,9 @@ namespace Core
 
         private void OnApplicationFocus(bool hasFocus)
         {
+            if (Advertisement.isShowing) return;
+            if (GameStateHandler.CurrentGameState == GameState.GameOver) return;
+            
             if (!hasFocus)
                 _pauseMenu.ToggleOnPausePanel();
         }
