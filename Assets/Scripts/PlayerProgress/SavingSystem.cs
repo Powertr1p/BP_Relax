@@ -16,9 +16,7 @@ namespace PlayerProgress
             PlayerData data = new PlayerData(progress.PlayerLevel, progress.PlayerLevelProgress);
             
             using (FileStream stream = new FileStream(path, FileMode.Create))
-            {
                 formatter.Serialize(stream, data);
-            }
         }
 
         public static PlayerData LoadPlayer()
