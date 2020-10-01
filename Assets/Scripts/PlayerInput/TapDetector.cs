@@ -20,9 +20,6 @@ namespace PlayerInput
         
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0)) //TODO: Delete before build
-                OnPlayerTap?.Invoke(_camera.ScreenToWorldPoint(Input.mousePosition)); //TODO: Delete before build
-            
             if (GameStateHandler.CurrentGameState == GameState.NormalState)
                 for (int i = 0; i < Input.touchCount; i++)
                     if (Input.GetTouch(i).phase == TouchPhase.Began)

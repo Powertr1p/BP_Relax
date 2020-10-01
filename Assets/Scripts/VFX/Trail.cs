@@ -23,9 +23,6 @@ namespace VFX
         private void Update()
         {
             transform.position = new Vector3(_tapDetector.GetTapPosition().x, _tapDetector.GetTapPosition().y, 0);
-            
-            if (!Input.GetMouseButton(0)) //TODO: delete before build
-                _renderer.Clear();
         }
     }
 }
