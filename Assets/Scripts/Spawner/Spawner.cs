@@ -37,7 +37,7 @@ namespace Spawner
         
          private void SpawnAdditionalBubblesForSlowState()
          {
-             for (int i = 0; i < 20; i++)
+             for (int i = 0; i < 25; i++)
              {
                  var bubble = _factory.GetCreatedBubble();
                  if (i <= 10)

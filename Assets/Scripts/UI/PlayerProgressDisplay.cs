@@ -18,7 +18,7 @@ namespace UI
         private int _currentPlayerLevel;
         private float _targetProgress;
 
-        public float GetScoreFormula() => _score.GetScore / 10000f;
+        public float GetScoreFormula() => _score.GetScore / 5000f;
 
         private void OnEnable()
         {
