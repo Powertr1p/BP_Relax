@@ -7,8 +7,8 @@ namespace Ads
 {
     public abstract class UnityAds : MonoBehaviour
     {
-        protected const string GameID = "3805225";
-        protected bool IsTestMode = false;
+        private const string GameID = "3805225";
+        private bool _isTestMode = false;
 
         private void Start()
         {
@@ -17,7 +17,7 @@ namespace Ads
 
         protected virtual void Init()
         {
-            Advertisement.Initialize(GameID, IsTestMode);
+            Advertisement.Initialize(GameID, _isTestMode);
         }
     }
 }

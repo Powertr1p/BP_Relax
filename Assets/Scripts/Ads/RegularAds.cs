@@ -4,11 +4,11 @@ namespace Ads
 {
     public class RegularAds : UnityAds
     {
-        private const string _placementID = "video";
+        private const string PlacementID = "video";
         
         public static void ShowAds()
         {
-            Advertisement.Show(_placementID);
+            Advertisement.Show(PlacementID);
         }
     }
 }

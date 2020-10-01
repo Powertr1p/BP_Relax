@@ -6,7 +6,7 @@ namespace Ads
 {
     public class BannerAds : UnityAds
     {
-        private const string _placementID = "BannerPlacement";
+        private const string PlacementID = "BannerPlacement";
 
         protected override void Init()
         {
@@ -19,7 +19,7 @@ namespace Ads
             while (!Advertisement.isInitialized)
                 yield return new WaitForSecondsRealtime(0.1f);
 
-            Advertisement.Banner.Show(_placementID);
+            Advertisement.Banner.Show(PlacementID);
         }
     }
 }
