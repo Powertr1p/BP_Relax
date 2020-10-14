@@ -25,6 +25,7 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
+    implementation 'com.android.installreferrer:installreferrer:1.1.2'
     implementation 'androidx.annotation:annotation:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/MyTargetDependencies.xml:22
     implementation 'androidx.collection:collection:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/MyTargetDependencies.xml:21
     implementation 'androidx.core:core:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/VungleDependencies.xml:11
