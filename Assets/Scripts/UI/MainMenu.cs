@@ -19,7 +19,6 @@ namespace UI
         
         public void LoadGame()
         {
-            Advertisement.Banner.Hide();
             SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
     }

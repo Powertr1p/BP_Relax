@@ -25,7 +25,6 @@ apply plugin: 'com.android.library'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
-    implementation 'com.android.installreferrer:installreferrer:1.1.2'
     implementation 'androidx.annotation:annotation:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/MyTargetDependencies.xml:22
     implementation 'androidx.collection:collection:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/MyTargetDependencies.xml:21
     implementation 'androidx.core:core:1.1.0' // Assets/Appodeal/Editor/NetworkConfigs/VungleDependencies.xml:11
@@ -69,7 +68,7 @@ dependencies {
     implementation 'io.bidmachine:ads.networks.criteo:1.6.0.5' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:6
     implementation 'io.bidmachine:ads.networks.facebook:1.6.0.4@aar' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:7
     implementation 'io.bidmachine:ads.networks.my_target:1.6.0.3@aar' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:11
-    implementation 'io.bidmachine:ads:1.6.0' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:22
+    implementation 'io.bidmachine:ads:1.6.0'     // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:22
 // Android Resolver Dependencies End
 **DEPS**}
 
@@ -101,7 +100,7 @@ android {
         }
         versionCode **VERSIONCODE**
         versionName '**VERSIONNAME**'
-        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD**
+        consumerProguardFiles 'proguard-unity.txt'**USER_PROGUARD** 
     }
 
     lintOptions {

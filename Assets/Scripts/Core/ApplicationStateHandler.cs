@@ -10,7 +10,6 @@ namespace Core
 
         private void OnApplicationFocus(bool hasFocus)
         {
-            if (Advertisement.isShowing) return;
             if (GameStateHandler.CurrentGameState == GameState.GameOver) return;
             
             if (!hasFocus)
