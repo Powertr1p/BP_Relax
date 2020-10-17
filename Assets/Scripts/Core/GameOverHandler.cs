@@ -17,6 +17,8 @@ namespace Core
         [SerializeField] private GameObject _spawner;
         [SerializeField] private GameObject _circleEffect;
 
+        public bool IsAdShowing { get; private set; } 
+
         public event Action OnAdsFinish;
         
         private TimeCounter _timeCounter;
@@ -44,7 +46,11 @@ namespace Core
             _sceneIndexToLoadAfterAds = 1;
 
             if (Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+            {
                 Appodeal.show(Appodeal.INTERSTITIAL);
+                IsAdShowing = true;
+            }
+                
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
@@ -98,11 +104,13 @@ namespace Core
         public void onInterstitialShown()
         {
             OnAdsFinish?.Invoke();
-            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
+            SceneManager.LoadSceneAsync(_sceneIndexToLoadAfterAds);
+            IsAdShowing = false;
         }
 
         public void onInterstitialClosed()
         {
+            IsAdShowing = false;
         }
 
         public void onInterstitialClicked()

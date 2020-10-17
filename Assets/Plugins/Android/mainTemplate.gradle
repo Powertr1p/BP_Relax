@@ -68,7 +68,7 @@ dependencies {
     implementation 'io.bidmachine:ads.networks.criteo:1.6.0.5' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:6
     implementation 'io.bidmachine:ads.networks.facebook:1.6.0.4@aar' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:7
     implementation 'io.bidmachine:ads.networks.my_target:1.6.0.3@aar' // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:11
-    implementation 'io.bidmachine:ads:1.6.0'     // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:22
+    implementation 'io.bidmachine:ads:1.6.0'    // Assets/Appodeal/Editor/NetworkConfigs/BidMachineDependencies.xml:22
 // Android Resolver Dependencies End
 **DEPS**}
 

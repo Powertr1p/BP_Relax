@@ -6,7 +6,7 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <meta-data
-                android:name="com.google.android.gms.ads.50adf1be2716c77b3ffe8b1e3f6422280a83ef3305636d"
+                android:name="com.google.android.gms.ads.ca-app-pub-6213501674974937~8988012270"
                 android:value="ca-app-pub-6213501674974937~8988012270"/>
     </application>
 
