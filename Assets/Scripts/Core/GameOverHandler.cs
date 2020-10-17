@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections;
-using Ads;
+using AppodealAds.Unity.Api;
+using AppodealAds.Unity.Common;
 using PlayerInput;
 using UI.TimeCounter;
 using UnityEngine;
-using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
 
 namespace Core
 {
     [RequireComponent(typeof(TimeCounter))]
-    public class GameOverHandler : MonoBehaviour, IUnityAdsListener
+    public class GameOverHandler : MonoBehaviour, IInterstitialAdListener
     {
         [SerializeField] private GameObject _gameOverPanel;
         [SerializeField] private TapRaycaster _raycaster;
         [SerializeField] private GameObject _spawner;
         [SerializeField] private GameObject _circleEffect;
+
+        public bool IsAdShowing { get; private set; } 
 
         public event Action OnAdsFinish;
         
@@ -36,21 +38,19 @@ namespace Core
         
         private void Start()
         {
-            Advertisement.AddListener(this);
-        }
-
-        public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
-        {
-            OnAdsFinish?.Invoke();
-            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
+            Appodeal.setInterstitialCallbacks(this);
         }
 
         public void Restart()
         {
             _sceneIndexToLoadAfterAds = 1;
-           
-            if (Advertisement.IsReady())
-                RegularAds.ShowAds();
+
+            if (Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+            {
+                Appodeal.show(Appodeal.INTERSTITIAL);
+                IsAdShowing = true;
+            }
+                
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
@@ -59,8 +59,8 @@ namespace Core
         {
             _sceneIndexToLoadAfterAds = 0;
             
-            if (Advertisement.IsReady())
-                RegularAds.ShowAds();
+            if (Appodeal.isLoaded(Appodeal.INTERSTITIAL))
+                Appodeal.show(Appodeal.INTERSTITIAL);
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
@@ -84,19 +84,40 @@ namespace Core
         private void OnDisable()
         {
             _timeCounter.OnTimeIsUp -= ToggleGameOver;
-            Advertisement.RemoveListener(this);
-        }
-        
-        public void OnUnityAdsReady(string placementId)
-        {
         }
 
-        public void OnUnityAdsDidError(string message)
+        public void onInterstitialLoaded(bool isPrecache)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void onInterstitialFailedToLoad()
         {
             SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
-        public void OnUnityAdsDidStart(string placementId)
+        public void onInterstitialShowFailed()
+        {
+            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
+        }
+
+        public void onInterstitialShown()
+        {
+            OnAdsFinish?.Invoke();
+            SceneManager.LoadSceneAsync(_sceneIndexToLoadAfterAds);
+            IsAdShowing = false;
+        }
+
+        public void onInterstitialClosed()
+        {
+            IsAdShowing = false;
+        }
+
+        public void onInterstitialClicked()
+        {
+        }
+
+        public void onInterstitialExpired()
         {
         }
     }

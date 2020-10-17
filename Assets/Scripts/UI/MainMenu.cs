@@ -9,13 +9,8 @@ namespace UI
     {
         [SerializeField] private GameObject _creditsPanel;
         
-        private bool _isCreditsOpen; 
-        
-        private void Start()
-        {
-            StartCoroutine(BannerAds.ShowBanner());
-        }
-        
+        private bool _isCreditsOpen;
+
         public void ShowCredits()
         {
             _creditsPanel.SetActive(!_isCreditsOpen);
@@ -24,7 +19,6 @@ namespace UI
         
         public void LoadGame()
         {
-            Advertisement.Banner.Hide();
             SceneManager.LoadScene("Game", LoadSceneMode.Single);
         }
     }
