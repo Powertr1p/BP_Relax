@@ -1,3 +1,4 @@
+using System.Collections;
 using AppodealAds.Unity.Api;
 using UnityEngine;
 
@@ -9,7 +10,13 @@ namespace Ads
         
         private void Start()
         {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
             Appodeal.initialize(AppKey,Appodeal.INTERSTITIAL);
+            Appodeal.muteVideosIfCallsMuted(true);
         }
     }
 }

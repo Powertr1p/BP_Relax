@@ -80,7 +80,7 @@ namespace Core
 
         private void OnUnpaused()
         {
-            CurrentGameState = _previousState;
+            CurrentGameState = _previousState; 
             Time.timeScale = _normalTimeScale;
         }
         

@@ -17,8 +17,6 @@ namespace Core
         [SerializeField] private GameObject _spawner;
         [SerializeField] private GameObject _circleEffect;
 
-        public bool IsAdShowing { get; private set; } 
-
         public event Action OnAdsFinish;
         
         private TimeCounter _timeCounter;
@@ -29,28 +27,20 @@ namespace Core
         private void Awake()
         {
             _timeCounter = GetComponent<TimeCounter>();
+            Appodeal.setInterstitialCallbacks(this);
         }
 
         private void OnEnable()
         {
             _timeCounter.OnTimeIsUp += ToggleGameOver;
         }
-        
-        private void Start()
-        {
-            Appodeal.setInterstitialCallbacks(this);
-        }
 
         public void Restart()
         {
             _sceneIndexToLoadAfterAds = 1;
-
-            if (Appodeal.isLoaded(Appodeal.INTERSTITIAL))
-            {
+            
+            if (Appodeal.canShow(Appodeal.INTERSTITIAL))
                 Appodeal.show(Appodeal.INTERSTITIAL);
-                IsAdShowing = true;
-            }
-                
             else
                 SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
@@ -88,29 +78,26 @@ namespace Core
 
         public void onInterstitialLoaded(bool isPrecache)
         {
-            throw new NotImplementedException();
         }
 
         public void onInterstitialFailedToLoad()
         {
-            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void onInterstitialShowFailed()
         {
-            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void onInterstitialShown()
         {
             OnAdsFinish?.Invoke();
-            SceneManager.LoadSceneAsync(_sceneIndexToLoadAfterAds);
-            IsAdShowing = false;
+            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void onInterstitialClosed()
         {
-            IsAdShowing = false;
+            OnAdsFinish?.Invoke();
+            SceneManager.LoadScene(_sceneIndexToLoadAfterAds);
         }
 
         public void onInterstitialClicked()
